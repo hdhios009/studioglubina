@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://studioglubina.ru/sitemap.xml
