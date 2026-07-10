@@ -15,20 +15,19 @@
   <link rel="icon" type="image/png" href="images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Onest:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <div class="bg-grid" aria-hidden="true"></div>
-  <div class="depth-rail" id="depthRail" aria-hidden="true">
-    <span class="dot" data-sec="top" style="top:8%"><span>0 м · старт</span></span>
-    <span class="dot" data-sec="services" style="top:30%"><span>−100 м · структура</span></span>
-    <span class="dot" data-sec="packages" style="top:52%"><span>−250 м · тарифы</span></span>
-    <span class="dot" data-sec="faq" style="top:74%"><span>−400 м · вопросы</span></span>
-    <span class="dot" data-sec="contact" style="top:92%"><span>−1000 м · контакт</span></span>
-    <span class="marker" id="depthMarker" style="top:8%"></span>
-    <span class="cursor" id="depthCursor" style="top:8%"><b id="depthVal">0</b> м</span>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"><div class="cursor-dot__inner"></div></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="lightsweep" aria-hidden="true"></div>
+  <div class="lamp-overlay" id="lampOverlay" aria-hidden="true"></div>
+  <div class="depth-hud" id="depthHud" aria-hidden="true">
+    <div class="depth-hud__val" id="depthVal">0m</div>
+    <div class="depth-hud__label" id="depthLabel">Surface</div>
   </div>
 
   <!-- ================= NAV ================= -->
@@ -36,332 +35,241 @@
     <div class="wrap">
       <a class="brand" href="#top" aria-label="Studio Glubina">
         <img src="images/logo.png" alt="Логотип Studio Glubina" />
-        <span>ГЛУБИНА</span>
+        <span class="brand__t"><span>ГЛУБИНА</span><i>web studio</i></span>
       </a>
       <nav class="nav-links">
-        <a href="#services">Услуги</a>
-        <a href="#packages">Цены</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Контакты</a>
-        <a class="btn btn-primary" href="https://t.me/studioglubinabot" target="_blank" rel="noopener">Обсудить проект</a>
+        <a href="#case">Кейсы</a>
+        <a href="#process">Процесс</a>
+        <a href="#pricing">Цены</a>
+        <a href="#contact">Контакт</a>
+        <a class="btn btn-primary nav-cta" href="https://t.me/studioglubinabot" target="_blank" rel="noopener" style="height:44px;padding:0 22px;font-size:13px"><span class="nav-cta__label">Обсудить проект</span></a>
       </nav>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <!-- ================= HERO ================= -->
-  <section class="hero" id="top">
-    <div class="hero__bg">
-      <img src="images/iceberg.jpg" alt="Айсберг: над водой — малая часть, основная масса скрыта в глубине" />
-    </div>
-    <div class="wrap">
-      <div class="hero__inner">
-        <p class="eyebrow">Studio Glubina · веб-студия</p>
-        <h1 style="margin-top:16px">Особые сайты <span class="accent">для бизнеса</span></h1>
-        <p class="hero__sub">Сайт, который объясняет услугу, показывает ценность и ведёт клиента к заявке. Запуск без большой оплаты за разработку — дальше сайт работает по ежемесячной модели: размещение, обновления, мелкие правки и техническое управление.</p>
-        <div class="hero__actions">
-          <a class="btn btn-tg" href="https://t.me/studioglubinabot" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1-1 .2-1.5l19-7.3c.9-.3 1.6.2 1.3 1.6Z"/></svg>
-            Обсудить проект
-          </a>
-          <a class="btn btn-ghost" href="#packages">Смотреть тарифы</a>
-        </div>
-        <p style="margin:16px 0 0;font-size:14px;color:var(--text-3)">Ответьте на несколько вопросов в Telegram-боте — я предложу подходящий формат сайта.</p>
-        <div class="hero__stats">
-          <div><b>2–5</b><span>дней на запуск</span></div>
-          <div><b>от 5 000 ₽</b><span>старт без большого бюджета</span></div>
-          <div><b>100%</b><span>адаптация под телефон</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="hero__labels">
-      <span style="top:24%;left:60%;animation-delay:.3s;transform:translateY(10px)">структура</span>
-      <span style="top:42%;left:79%;animation-delay:.6s;transform:translateY(10px)">дизайн</span>
-      <span style="top:60%;left:57%;animation-delay:.9s;transform:translateY(10px)">заявки</span>
-      <span style="top:76%;left:73%;animation-delay:1.2s;transform:translateY(10px)">поддержка</span>
-    </div>
-    <div class="scroll-hint">ЛИСТАЙТЕ ВНИЗ<span class="arrow"></span></div>
-  </section>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mm-close" id="mmClose" aria-label="Закрыть">×</button>
+    <a href="#case">Кейсы</a>
+    <a href="#process">Процесс</a>
+    <a href="#pricing">Цены</a>
+    <a href="#contact">Контакт</a>
+    <a class="btn btn-primary nav-cta" href="https://t.me/studioglubinabot" target="_blank" rel="noopener"><span class="nav-cta__label">Обсудить проект</span></a>
+  </div>
 
-  <!-- ================= SERVICES ================= -->
-  <section class="section" id="services">
+  <!-- ================= SURFACE ================= -->
+  <section class="surface" id="top" data-screen-label="Surface" data-depth="0m" data-depth-label="Surface">
+    <div class="surface__bg">
+      <div class="surface__atmosphere"></div>
+      <img class="surface__img" src="images/iceberg.jpg" alt="Айсберг: над водой — малая часть, основная масса скрыта в глубине" />
+      <div class="surface__scrim"></div>
+      <div class="surface__vignette"></div>
+    </div>
+    <span class="surface__depth-word" aria-hidden="true">DEPTH</span>
     <div class="wrap">
-      <div class="section-head rv">
-        <p class="eyebrow">Услуги</p>
-        <h2>Что я создаю</h2>
-        <p>Делаю сайты для услуг, экспертов и малого бизнеса: структура, дизайн, адаптация под телефон, приём заявок и поддержка после запуска.</p>
-      </div>
-      <div class="services-grid">
-        <article class="svc rv d1">
-          <div class="num">01</div>
-          <h3>Лендинги</h3>
-          <p>Одностраничные сайты, которые ведут клиента к одному действию — оставить заявку.</p>
-        </article>
-        <article class="svc rv d2">
-          <div class="num">02</div>
-          <h3>Сайты для малого бизнеса</h3>
-          <p>Аккуратная страница для услуг, цен, доверия, контактов и заявок.</p>
-        </article>
-        <article class="svc rv d3">
-          <div class="num">03</div>
-          <h3>Анимации и переходы</h3>
-          <p>Движение, которое запоминается и делает интерфейс живым, а не шаблонным.</p>
-        </article>
+      <div class="surface__text">
+        <p class="eyebrow">Studio Glubina</p>
+        <h1 id="heroTitle" data-text="ГЛУБИНА">ГЛУБ<br class="hero-break">ИНА</h1>
+        <p class="surface__sub">То, что видно посетителю сайта — это только поверхность.</p>
+        <div class="surface__cta">
+          <a class="btn btn-primary cursor-link nav-cta" href="#contact" style="width:100%"><span class="nav-cta__label">Обсудить проект</span></a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= AUDIENCE + MODEL ================= -->
-  <section class="section">
-    <div class="wrap two-col">
-      <div class="rv">
-        <p class="eyebrow">Для кого</p>
-        <h2 style="font-size:clamp(26px,3.4vw,40px);margin-top:16px">Кому подойдёт сайт</h2>
-        <p style="color:var(--text-3);margin:14px 0 0">Небольшой бизнес и частные специалисты, которым нужен аккуратный работающий сайт без огромного бюджета на разработку.</p>
-        <div class="chips">
-          <span>Мастера красоты</span>
-          <span>Репетиторы</span>
-          <span>Детские центры</span>
-          <span>Массажисты</span>
-          <span>Психологи</span>
-          <span>Студии и салоны</span>
-          <span>Ремонт и услуги</span>
-          <span>Telegram-сервисы</span>
-          <span>Локальный бизнес</span>
-        </div>
+  <!-- ================= DEPTH REVEAL -10m ================= -->
+  <section class="screen" data-screen-label="Depth -10m" data-depth="-10m" data-depth-label="Result">
+    <div class="wrap">
+      <div class="depthline rv">
+        <h2>Люди видят только результат.</h2>
       </div>
-      <div class="model-card rv">
-        <p class="eyebrow">Как это работает</p>
-        <h3>Сайт работает по ежемесячной модели</h3>
-        <p style="color:var(--text-2);margin:0 0 22px;font-size:15px">Вы оплачиваете запуск сайта, а дальше сайт остаётся под техническим управлением Studio Glubina: размещение, подключение домена, обновления, мелкие правки и техническая поддержка.</p>
-        <ul>
-          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#7fc4ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Домен, размещение и техническое управление входят в ежемесячную модель</li>
-          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#7fc4ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Обновления и мелкие правки после запуска</li>
-          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#7fc4ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Выкуп сайта и домена обсуждается отдельно</li>
-        </ul>
-        <a class="btn btn-primary" href="https://t.me/studioglubinabot" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1-1 .2-1.5l19-7.3c.9-.3 1.6.2 1.3 1.6Z"/></svg>
-          Подобрать тариф в боте
+    </div>
+  </section>
+
+  <!-- ================= TYPOGRAPHIC SCREEN -50m ================= -->
+  <section class="screen" data-screen-label="Depth -50m" data-depth="-50m" data-depth-label="Foundation">
+    <div class="wrap">
+      <div class="wordfield" id="wordfield">
+        <span>Разбор</span>
+        <span>Структура</span>
+        <span>Дизайн</span>
+        <span>Сборка</span>
+        <span>Поддержка</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REAL CASE -120m ================= -->
+  <section class="screen screen-tight" id="case" data-screen-label="Case" data-depth="-120m" data-depth-label="Work">
+    <div class="wrap">
+      <p class="eyebrow rv" style="margin-bottom:56px">Кейс</p>
+      <div class="case-full">
+        <a class="case-full__frame rv cursor-view" href="kotiksym-demo-standalone.html" rel="noopener" style="display:block;text-decoration:none">
+          <iframe src="kotiksym-demo.html" title="kotiksym.ru" loading="lazy" style="position:absolute;inset:0;width:250%;height:250%;transform:scale(.4);transform-origin:top left;border:0;pointer-events:none;background:#FFFDF9"></iframe>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PRICING ================= -->
-  <section class="section" id="packages">
-    <div class="wrap">
-      <div class="section-head rv">
-        <p class="eyebrow">Тарифы</p>
-        <h2>Выберите формат сайта</h2>
-        <p>Оплачиваете запуск, затем ежемесячно — работу сайта, поддержку и обновления.</p>
-      </div>
-      <div class="plans">
-
-        <article class="plan rv d1">
-          <div class="plan__name">Старт</div>
-          <p class="plan__for">Для мастеров, экспертов и небольших услуг.</p>
-          <div class="plan__price"><b>5 000 ₽</b><span>запуск</span></div>
-          <div class="plan__mo">затем 1 490 ₽ / мес</div>
-          <div class="plan__term">минимальный срок — от 3 месяцев</div>
-          <ul class="plan__feat">
-            <li>1 страница: услуги, цены, контакты</li>
-            <li>Кнопки Telegram / WhatsApp</li>
-            <li>Адаптация под телефон</li>
-            <li>1 мелкая правка в месяц</li>
-            <li>Домен и размещение под управлением Studio Glubina</li>
+        <div class="rv d1">
+          <div class="case-full__meta"><span>Образование</span><span>2026</span></div>
+          <h3>Детская школа развития</h3>
+          <p>Родитель должен за несколько секунд понять: ребёнку можно помочь с чтением и пониманием текста, а первый шаг — бесплатная диагностика.</p>
+          <p>Собрали сайт вокруг боли родителя: ребёнок медленно читает, не понимает смысл, долго делает домашние задания. Добавили результат на первом экране, реальные фотографии, диагностику, цену, отзывы и форму заявки.</p>
+          <ul class="case-full__list">
+            <li>Первый экран с результатом для родителя</li>
+            <li>Бесплатная диагностика как первый шаг</li>
+            <li>Цена, отзывы, FAQ, форма заявки</li>
+            <li>Локальная SEO-структура и адаптация под телефон</li>
           </ul>
-          <a class="btn btn-ghost" href="https://t.me/studioglubinabot?start=start" target="_blank" rel="noopener">Выбрать «Старт»</a>
-        </article>
-
-        <article class="plan popular rv d2">
-          <div class="plan__tag">ПОПУЛЯРНЫЙ</div>
-          <div class="plan__name">Бизнес</div>
-          <p class="plan__for">Для студий, сервисов, центров и локального бизнеса.</p>
-          <div class="plan__price"><b>10 000 ₽</b><span>запуск</span></div>
-          <div class="plan__mo">затем 2 490 ₽ / мес</div>
-          <div class="plan__term">минимальный срок — от 6 месяцев</div>
-          <ul class="plan__feat">
-            <li>Сильный первый экран</li>
-            <li>Услуги, преимущества, цены</li>
-            <li>Отзывы, FAQ, форма заявки</li>
-            <li>Базовые анимации</li>
-            <li>2–3 мелкие правки в месяц</li>
-            <li>Домен и размещение под управлением Studio Glubina</li>
-          </ul>
-          <a class="btn btn-tg" href="https://t.me/studioglubinabot?start=business" target="_blank" rel="noopener">Выбрать «Бизнес»</a>
-        </article>
-
-        <article class="plan rv d3">
-          <div class="plan__name">Особый сайт</div>
-          <p class="plan__for">Для проектов, которым нужен дизайн, анимации и нестандартная подача.</p>
-          <div class="plan__price"><b>20 000 ₽</b><span>запуск</span></div>
-          <div class="plan__mo">затем 3 990 ₽ / мес</div>
-          <div class="plan__term">минимальный срок — от 6 месяцев</div>
-          <ul class="plan__feat">
-            <li>Индивидуальная визуальная идея</li>
-            <li>Нестандартный первый экран</li>
-            <li>Анимации и интерактив</li>
-            <li>Развитие сайта и правки</li>
-            <li>Больше визуальных правок и контроль анимаций</li>
-            <li>Приоритетная поддержка</li>
-            <li>Домен и размещение под управлением Studio Glubina</li>
-          </ul>
-          <a class="btn btn-ghost" href="https://t.me/studioglubinabot?start=special" target="_blank" rel="noopener">Выбрать «Особый сайт»</a>
-        </article>
-
+          <a class="btn" href="kotiksym-demo-standalone.html" rel="noopener">Посмотреть демоверсию</a>
+          <span class="case-full__dive"><a href="#contact">Хочу похожий сайт →</a></span>
+          <div class="confidential-note">
+            <span class="confidential-note__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.4"/></svg></span>
+            <div><h4>Конфиденциальность проекта</h4><p>Этот сайт был создан для реального клиента. По его просьбе фотографии, адрес, контактные данные и часть личной информации скрыты в публичной версии портфолио. Дизайн, структура, адаптация и основной функционал проекта сохранены.</p></div>
+          </div>
+        </div>
       </div>
-      <p class="pricing-note rv">Пока сайт работает по ежемесячной модели, домен, размещение и техническое управление остаются у Studio Glubina. Если нужен сайт и домен в собственность — выкуп обсуждается отдельно.</p>
+
     </div>
   </section>
 
-  <!-- ================= ЧТО ВХОДИТ В ОПЛАТУ ================= -->
-  <section class="section">
+  <!-- ================= PROCESS -200m ================= -->
+  <section class="screen" id="process" data-screen-label="Process" data-depth="-200m" data-depth-label="Process">
     <div class="wrap">
-      <div class="section-head rv">
-        <p class="eyebrow">Ежемесячная модель</p>
-        <h2>Что входит в ежемесячную оплату</h2>
-        <p>Мы берём на себя техническую часть сайта, чтобы вам не пришлось разбираться в доменах, хостинге, публикации и настройках.</p>
-      </div>
-      <div class="services-grid">
-        <article class="svc rv d1"><h3>Размещение сайта</h3><p>Сайт размещается и остаётся доступным для клиентов.</p></article>
-        <article class="svc rv d2"><h3>Домен под управлением Studio Glubina</h3><p>Оформляем и подключаем домен, чтобы сайт работал без лишних настроек с вашей стороны.</p></article>
-        <article class="svc rv d3"><h3>Техническое управление</h3><p>Следим за публикацией, настройками и корректной работой страниц, кнопок и форм.</p></article>
-        <article class="svc rv d1"><h3>Мелкие правки</h3><p>Меняем текст, цены, контакты, фото, кнопки и небольшие блоки.</p></article>
-        <article class="svc rv d2"><h3>Обновление информации</h3><p>Поменялись услуги, условия, акции или контакты — обновляем сайт.</p></article>
-        <article class="svc rv d3"><h3>Контроль работы</h3><p>Проверяем, чтобы сайт открывался, кнопки работали, а форма заявки была доступна.</p></article>
-        <article class="svc rv d1"><h3>Помощь после запуска</h3><p>Нужно что-то поправить или уточнить по сайту — вы не остаётесь один на один с настройками.</p></article>
+      <p class="eyebrow rv" style="text-align:center;margin-bottom:20px">Процесс</p>
+      <div class="process" id="processLine">
+        <div class="process-traveler" id="processTraveler" aria-hidden="true"></div>
+        <div class="pstep"><span class="pstep__num">01</span><span class="pstep__dot"></span><div class="pstep__body"><h3>Разбор</h3><p>Погружаемся в нишу, изучаем задачу, аудиторию и путь клиента до заявки.</p></div></div>
+        <div class="pstep"><span class="pstep__num">02</span><span class="pstep__dot"></span><div class="pstep__body"><h3>Структура</h3><p>Продумываем первый экран, услуги, блоки доверия, цены, FAQ и точки контакта.</p></div></div>
+        <div class="pstep"><span class="pstep__num">03</span><span class="pstep__dot"></span><div class="pstep__body"><h3>Дизайн</h3><p>Создаём визуальную подачу, адаптируем интерфейс под разные устройства и добавляем аккуратные анимации.</p></div></div>
+        <div class="pstep"><span class="pstep__num">04</span><span class="pstep__dot"></span><div class="pstep__body"><h3>Сборка</h3><p>Публикуем сайт, подключаем домен, настраиваем формы и проверяем работу всех кнопок.</p></div></div>
+        <div class="pstep"><span class="pstep__num">05</span><span class="pstep__dot"></span><div class="pstep__body"><h3>Поддержка</h3><p>Обновляем информацию, вносим необходимые правки и следим за стабильной работой сайта.</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- ================= FAQ ================= -->
-  <section class="section" id="faq">
+  <!-- ================= SUPPORT / INVISIBLE WORK -350m ================= -->
+  <section class="screen screen-tight" data-screen-label="Support" data-depth="-350m" data-depth-label="Support">
     <div class="wrap">
-      <div class="section-head rv">
-        <p class="eyebrow">FAQ</p>
-        <h2>Частые вопросы</h2>
-      </div>
-      <div class="faq-list">
-        <details class="faq-item rv">
-          <summary>За что ежемесячная оплата?<span class="plus">+</span></summary>
-          <p>В ежемесячную оплату входит размещение сайта, домен под управлением Studio Glubina, техническое управление, обновление информации, мелкие правки и контроль работы сайта.</p>
-        </details>
-        <details class="faq-item rv">
-          <summary>Мне нужно самому покупать хостинг?<span class="plus">+</span></summary>
-          <p>Нет. Техническое размещение сайта входит в ежемесячную модель. Вам не нужно отдельно разбираться в хостинге, публикации и настройках.</p>
-        </details>
-        <details class="faq-item rv">
-          <summary>Что значит ежемесячная модель?<span class="plus">+</span></summary>
-          <p>Вы оплачиваете запуск сайта, а дальше сайт работает по ежемесячной оплате. В неё входит работа сайта, техническое управление, мелкие правки и обновление информации.</p>
-        </details>
-        <details class="faq-item rv">
-          <summary>Это аренда сайта?<span class="plus">+</span></summary>
-          <p>По сути, это сайт как сервис: вы не покупаете сайт полностью на старте, а оплачиваете запуск и ежемесячную работу сайта. Studio Glubina берёт на себя домен, размещение, обновления и техническую часть.</p>
-        </details>
-        <details class="faq-item rv">
-          <summary>Чей будет домен?<span class="plus">+</span></summary>
-          <p>Пока сайт работает по ежемесячной модели, домен оформляется и находится под управлением Studio Glubina — чтобы мы отвечали за размещение, техническую часть и стабильную работу.</p>
-        </details>
-        <details class="faq-item rv">
-          <summary>Можно ли забрать домен и сайт себе?<span class="plus">+</span></summary>
-          <p>Да. Если хотите полностью забрать сайт и домен себе, можно обсудить выкуп. После выкупа сайт и домен передаются вам.</p>
-        </details>
-        <details class="faq-item rv">
-          <summary>Что будет, если перестать платить?<span class="plus">+</span></summary>
-          <p>Сайт будет снят с публикации. Перед этим я предупреждаю и даю время оплатить.</p>
-        </details>
-        <details class="faq-item rv">
-          <summary>Что считается мелкими правками?<span class="plus">+</span></summary>
-          <p>Изменить текст, цену, фото, контакты, кнопку или небольшой блок информации на сайте.</p>
-        </details>
-        <details class="faq-item rv">
-          <summary>Сколько времени занимает запуск?<span class="plus">+</span></summary>
-          <p>Стартовый сайт — от 2–5 дней. Бизнес-сайт — от 5–10 дней. Особый сайт зависит от сложности.</p>
-        </details>
+      <p class="eyebrow rv" style="margin-bottom:20px">Ежемесячная модель</p>
+      <h2 class="rv" style="font-size:clamp(28px,3.6vw,44px);max-width:640px;margin-bottom:56px">Работа, которую не видно</h2>
+      <div class="support-list rv">
+        <div><h4>Размещение и домен</h4><p>Сайт остаётся доступным для клиентов; домен оформляем и подключаем сами.</p></div>
+        <div><h4>Техническое управление</h4><p>Следим за публикацией, настройками и корректной работой кнопок и форм.</p></div>
+        <div><h4>Правки и обновления</h4><p>Меняем текст, цены, контакты, фото вслед за изменениями в бизнесе.</p></div>
+        <div><h4>Поддержка после запуска</h4><p>Проверяем работу сайта и остаёмся на связи.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ================= КТО ДЕЛАЕТ ================= -->
-  <section class="section">
+  <!-- ================= PRICING -500m ================= -->
+  <section class="screen screen-tight" id="pricing" data-screen-label="Pricing" data-depth="-500m" data-depth-label="Pricing">
     <div class="wrap">
-      <div class="cta-band rv" style="text-align:left">
-        <p class="eyebrow">Кто делает сайт</p>
-        <h2 style="margin-top:14px">Небольшая студия, а не безликий шаблон</h2>
-        <p style="margin:16px 0 0;max-width:560px">Studio Glubina — это проект, где сайт не собирается как одинаковая заготовка. Я смотрю на нишу, задачу и путь клиента: что человек должен понять на первом экране, какие вопросы у него возникнут и куда он должен нажать. Перед запуском можно обсудить пример первого экрана под вашу нишу.</p>
-        <p style="margin:14px 0 0;max-width:560px;color:var(--text-2);border-left:2px solid var(--blue-lt);padding-left:16px">Я не собираю сайт как безликий шаблон. Сначала смотрю, что человек должен понять за первые 5 секунд, какие вопросы у него возникнут и куда он должен нажать.</p>
-        <a class="btn btn-primary" style="margin-top:24px" href="https://t.me/studioglubinabot" target="_blank" rel="noopener">Обсудить проект</a>
+      <p class="eyebrow rv" style="margin-bottom:20px">Форматы работы</p>
+      <h2 class="rv" style="font-size:clamp(28px,3.6vw,44px);max-width:640px;margin-bottom:56px">Оплачиваете запуск, дальше — ежемесячно</h2>
+      <div class="pricing-cards">
+        <div class="price-card rv">
+          <span class="price-card__badge">Старт</span>
+          <h3 class="price-card__name">Старт</h3>
+          <p class="price-card__desc">Для мастеров, экспертов и небольших услуг.</p>
+          <div class="price-card__cost"><span class="price-card__price">7 000 ₽</span><span class="price-card__mo">+ 1 490 ₽/мес</span></div>
+          <ul class="price-card__feat"><li>1 страница</li><li>Telegram/WhatsApp</li><li>адаптация под телефон</li><li>1 правка в месяц</li></ul>
+          <a class="btn price-card__btn" href="https://t.me/studioglubinabot?start=start" target="_blank" rel="noopener">Выбрать тариф</a>
+        </div>
+        <div class="price-card price-card--featured rv">
+          <span class="price-card__badge price-card__badge--featured">Рекомендуемый тариф</span>
+          <h3 class="price-card__name">Бизнес</h3>
+          <p class="price-card__desc">Для студий, сервисов, центров и локального бизнеса.</p>
+          <div class="price-card__cost"><span class="price-card__price">15 000 ₽</span><span class="price-card__mo">+ 2 490 ₽/мес</span></div>
+          <ul class="price-card__feat"><li>Сильный первый экран</li><li>Отзывы, FAQ, форма заявки</li><li>Современные анимации</li><li>2–3 правки в месяц</li></ul>
+          <a class="btn btn-primary price-card__btn" href="https://t.me/studioglubinabot?start=business" target="_blank" rel="noopener">Выбрать тариф</a>
+        </div>
+        <div class="price-card rv">
+          <span class="price-card__badge price-card__badge--premium">Premium</span>
+          <h3 class="price-card__name">Особый сайт</h3>
+          <p class="price-card__desc">Для проектов с индивидуальной разработкой и нестандартными задачами.</p>
+          <div class="price-card__cost"><span class="price-card__price"><span class="price-card__from">от</span> 20 000 ₽</span><span class="price-card__mo"><span class="price-card__from">от</span> 3 990 ₽/мес</span></div>
+          <ul class="price-card__feat"><li>Полностью индивидуальный дизайн</li><li>Сложные анимации и интерактив</li><li>Интеграции с API и сервисами</li><li>Каталоги, фильтры, личные кабинеты</li><li>Приоритетная поддержка</li></ul>
+          <a class="btn price-card__btn" href="https://t.me/studioglubinabot?start=custom" target="_blank" rel="noopener">Выбрать тариф</a>
+        </div>
       </div>
+      <p class="rv" style="margin-top:32px;max-width:640px;font-size:13px;color:var(--muted)">Итоговая стоимость рассчитывается индивидуально и зависит от сложности проекта, количества страниц, необходимых интеграций и функциональности.</p>
+      <p class="rv" style="margin-top:12px;max-width:640px;font-size:13px;color:var(--muted)">Домен, размещение и техническое управление остаются у Studio Glubina на время ежемесячной модели. Выкуп сайта и домена в собственность — отдельно.</p>
+      <a class="btn btn-primary rv" style="margin-top:32px" href="https://t.me/studioglubinabot" target="_blank" rel="noopener">Подобрать тариф в боте</a>
     </div>
   </section>
 
-  <!-- ================= CTA BAND ================= -->
-  <section class="section">
+  <!-- ================= FAQ -800m ================= -->
+  <section class="screen screen-tight" id="faq" data-screen-label="FAQ" data-depth="-800m" data-depth-label="Questions">
     <div class="wrap">
-      <div class="cta-band rv">
-        <h2>Не знаете, какой сайт нужен?</h2>
-        <p>Ответьте на несколько вопросов в Telegram-боте — я посмотрю нишу и предложу подходящий формат: «Старт», «Бизнес» или «Особый сайт».</p>
-        <a class="btn btn-tg" href="https://t.me/studioglubinabot" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1-1 .2-1.5l19-7.3c.9-.3 1.6.2 1.3 1.6Z"/></svg>
-          Перейти в бота
-        </a>
+      <p class="eyebrow rv" style="margin-bottom:56px">Вопросы</p>
+      <div class="interview">
+        <div class="qa rv"><div class="q">За что ежемесячная оплата?</div><div class="a">В неё входит размещение сайта, домен под управлением Studio Glubina, техническое управление, обновление информации, мелкие правки и контроль работы сайта.</div></div>
+        <div class="qa rv"><div class="q">Мне нужно самому покупать хостинг?</div><div class="a">Нет. Техническое размещение входит в ежемесячную модель — вам не нужно разбираться в хостинге и настройках.</div></div>
+        <div class="qa rv"><div class="q">Это аренда сайта?</div><div class="a">По сути, сайт как сервис: вы не покупаете сайт полностью на старте, а оплачиваете запуск и ежемесячную работу. Studio Glubina берёт на себя домен, размещение и техническую часть.</div></div>
+        <div class="qa rv"><div class="q">Чей будет домен?</div><div class="a">Пока сайт работает по ежемесячной модели, домен находится под управлением Studio Glubina — чтобы мы отвечали за размещение и стабильную работу.</div></div>
+        <div class="qa rv"><div class="q">Можно ли забрать домен и сайт себе?</div><div class="a">Да. Если хотите полностью забрать сайт и домен, можно обсудить выкуп — после него всё передаётся вам.</div></div>
+        <div class="qa rv"><div class="q">Что будет, если перестать платить?</div><div class="a">Сайт будет снят с публикации. Перед приостановкой работы сайта мы заранее предупреждаем клиента и предоставляем время на оплату.</div></div>
+        <div class="qa rv"><div class="q">Сколько времени занимает запуск?</div><div class="a">Стартовый сайт — 2–5 дней. Бизнес-сайт — 5–10 дней. Особый сайт зависит от сложности.</div></div>
       </div>
     </div>
   </section>
 
   <!-- ================= CONTACT ================= -->
-  <section class="section" id="contact">
-    <div class="wrap">
-      <div class="contact-card rv">
-        <div id="formWrap">
-          <h2>Обсудим проект?</h2>
-          <p>Удобнее оставить заявку через Telegram-бота — он задаст несколько вопросов, а я предложу подходящий формат сайта.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px">
-            <a class="btn btn-tg" href="https://t.me/studioglubinabot" target="_blank" rel="noopener">Оставить заявку в Telegram</a>
-            <a class="btn btn-ghost" href="https://t.me/hdhios007" target="_blank" rel="noopener">Написать лично</a>
-          </div>
-          <p style="text-align:center;color:var(--text-3);font-size:13px;margin:22px auto 6px">Можно заполнить форму ниже, если удобнее без Telegram.</p>
-          <!-- Formspree: заявки приходят на studio.glubina@gmail.com -->
-          <form class="form" id="leadForm" action="https://formspree.io/f/mbdvzpdp" method="POST">
-            <input type="text" name="Имя" placeholder="Ваше имя" required />
-            <input type="text" name="Контакт" placeholder="Telegram или телефон" required />
-            <input type="text" name="Ниша" placeholder="Чем занимаетесь / ниша" />
-            <select name="Тариф">
-              <option value="Пока не знаю">Какой сайт нужен? — Пока не знаю</option>
-              <option value="Старт">Старт</option>
-              <option value="Бизнес">Бизнес</option>
-              <option value="Особый сайт">Особый сайт</option>
-            </select>
-            <textarea name="Комментарий" placeholder="Коротко о задаче"></textarea>
-            <button type="submit" class="btn btn-primary">Отправить заявку</button>
-          </form>
-          <div class="contact-methods">
-            <div>Telegram-бот: <a href="https://t.me/studioglubinabot" target="_blank" rel="noopener">@studioglubinabot</a></div>
-            <div>Лично: <a href="https://t.me/hdhios007" target="_blank" rel="noopener">@hdhios007</a></div>
-            <div>Почта: <a href="mailto:studio.glubina@gmail.com">studio.glubina@gmail.com</a></div>
-          </div>
-        </div>
-        <div class="form-done" id="formDone" hidden>
-          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#5fd39a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-          <h3>Заявка отправлена</h3>
-          <p>Свяжусь с вами в течение дня. Чтобы не ждать — напишите в Telegram.</p>
-          <a class="btn btn-tg" href="https://t.me/hdhios007" target="_blank" rel="noopener">Написать в Telegram</a>
-        </div>
+  <section class="abyss" id="contact" data-screen-label="Contact" data-depth="—" data-depth-label="Контакт">
+    <div class="wrap abyss__wrap--single">
+      <div id="formWrap">
+        <p class="eyebrow rv" style="text-align:center">Контакт</p>
+        <h2 class="rv" style="margin-top:16px;text-align:center">Обсудим проект?</h2>
+        <p class="rv" style="margin-top:14px;text-align:center;color:var(--text-2);font-size:15px">Расскажите о задаче — мы предложим подходящий формат и рассчитаем стоимость.</p>
+        <form class="abyss__form rv" id="leadForm" action="https://formspree.io/f/mbdvzpdp" method="POST">
+          <input type="text" name="Имя" placeholder="Ваше имя" required />
+          <input type="text" name="Контакт" placeholder="Telegram или телефон" required />
+          <input type="text" name="Ниша" placeholder="Чем занимаетесь" />
+          <select name="Тариф">
+            <option value="Пока не знаю">Какой сайт нужен? — Пока не знаю</option>
+            <option value="Старт">Старт</option>
+            <option value="Бизнес">Бизнес</option>
+            <option value="Особый сайт">Особый сайт</option>
+          </select>
+          <textarea name="Комментарий" placeholder="Коротко о задаче"></textarea>
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </form>
       </div>
+      <div class="abyss__done" id="formDone">
+        <h2>Увидимся на глубине.</h2>
+        <p style="color:var(--text-2);margin-top:16px">Свяжемся с вами в течение дня.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="cta-final" data-screen-label="Final CTA">
+    <div class="wrap">
+      <h2 class="rv">Есть идея для сайта?</h2>
+      <p class="rv">Сделаем современный сайт, который выделит вас среди конкурентов и будет приносить клиентов.</p>
+      <a class="btn btn-primary cta-final__btn rv" href="https://t.me/studioglubinabot" target="_blank" rel="noopener">Обсудить проект</a>
     </div>
   </section>
 
   <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <div class="wrap">
-      <a class="brand" href="#top">
-        <img src="images/logo.png" alt="Studio Glubina" />
-        <span>ГЛУБИНА</span>
-      </a>
-      <div class="footer__credit">
-        Особые сайты для бизнеса с ежемесячной поддержкой.<br />
-        Telegram: <a href="https://t.me/hdhios007" target="_blank" rel="noopener">@hdhios007</a> · <a href="mailto:studio.glubina@gmail.com">studio.glubina@gmail.com</a><br />
-        © 2026 Studio Glubina · Самозанятый Павлов М. Д. · ИНН 410122142698
+      <a href="#top"><img src="images/logo.png" alt="Studio Glubina" /></a>
+      <p class="footer__line">Studio Glubina — сайты для бизнеса и специалистов.</p>
+      <div class="footer__contacts">
+        <a class="footer__contact" href="https://t.me/studioglubinabot" target="_blank" rel="noopener">
+          <span class="footer__contact-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M21 4L2.5 11.5c-.9.36-.9 1.6 0 1.95l4.7 1.7 1.7 5.4c.3.95 1.5 1.15 2.1.35l2.5-3.2 4.9 3.6c.8.6 1.95.15 2.15-.85l3.2-15.4c.2-1-.75-1.8-1.75-1.45z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8.5 15.5l9-8-7.3 9.4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+          <span class="footer__contact-text"><span class="footer__contact-label">Telegram-бот</span><span class="footer__contact-value">@studioglubinabot</span></span>
+        </a>
+        <a class="footer__contact" href="https://t.me/hdhios007" target="_blank" rel="noopener">
+          <span class="footer__contact-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M21 4L2.5 11.5c-.9.36-.9 1.6 0 1.95l4.7 1.7 1.7 5.4c.3.95 1.5 1.15 2.1.35l2.5-3.2 4.9 3.6c.8.6 1.95.15 2.15-.85l3.2-15.4c.2-1-.75-1.8-1.75-1.45z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8.5 15.5l9-8-7.3 9.4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+          <span class="footer__contact-text"><span class="footer__contact-label">Лично</span><span class="footer__contact-value">@hdhios007</span></span>
+        </a>
+        <a class="footer__contact" href="mailto:studio.glubina@gmail.com">
+          <span class="footer__contact-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5.5" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+          <span class="footer__contact-text"><span class="footer__contact-label">E-mail</span><span class="footer__contact-value">studio.glubina@gmail.com</span></span>
+        </a>
       </div>
+      <p class="footer__legal">© 2026 Studio Glubina · Самозанятый Павлов М. Д. · ИНН 410122142698 · <a href="privacy.html">Политика конфиденциальности</a></p>
     </div>
   </footer>
 
