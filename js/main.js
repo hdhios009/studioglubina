@@ -1,3 +1,45 @@
+/* Yandex Metrika reachGoal helper */
+function reachMetrikaGoal(goalName, params) {
+  if (params === undefined) params = {};
+  try {
+    if (typeof window.ym === 'function') {
+      window.ym(110583575, 'reachGoal', goalName, params);
+    }
+  } catch (error) {
+    /* fail silently — never break user flow */
+  }
+}
+
+/* Yandex Metrika click listeners */
+(function () {
+  'use strict';
+
+  /* open_lead_form: clicks on #contact links */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[href="#contact"]');
+    if (el) { reachMetrikaGoal('open_lead_form'); }
+  });
+
+  /* click_tariffs: clicks on #pricing links */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[href="#pricing"]');
+    if (el) { reachMetrikaGoal('click_tariffs'); }
+  });
+
+  /* click_case: links to kotiksym-demo-standalone */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[href*="kotiksym-demo-standalone"]');
+    if (el) { reachMetrikaGoal('click_case', { case_name: 'kotiksym' }); }
+  });
+
+  /* click_telegram: any link to t.me */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[href*="t.me/"]');
+    if (el) { reachMetrikaGoal('click_telegram'); }
+  });
+
+})();
+
 /* Studio Glubina — cinematic interactions (vanilla, no deps) */
 (function () {
   'use strict';
@@ -214,6 +256,10 @@
         method: 'POST',
         body: fd
       }).then(function () {
+        reachMetrikaGoal('submit_lead_success', {
+          site_type: fd.get('siteType') || 'Не указано',
+          source: 'Studio Glubina Website'
+        });
         form.reset();
         if (btn) { btn.disabled = false; btn.textContent = btnDefaultText; }
         openThanksIfReady();
