@@ -4,15 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Studio Glubina — сайты для бизнеса под ключ, с ежемесячной поддержкой</title>
-  <meta name="description" content="Studio Glubina делает сайты для бизнеса: лендинги, корпоративные сайты, сайты с анимациями. Запуск без большой оплаты за разработку, ежемесячная поддержка. Тарифы от 5 000 ₽ + от 1 490 ₽/мес." />
-  <meta name="keywords" content="разработка сайтов, создание сайта, сайт для бизнеса, лендинг, веб-студия, сайт под ключ, сайт с ежемесячной поддержкой" />
+  <meta name="description" content="Studio Glubina создаёт сайты для бизнеса: продуманная структура, современный дизайн, мобильная адаптация, формы заявок и техническое сопровождение. Запуск от 7 000 ₽." />
   <meta name="author" content="Павлов Максим Дмитриевич" />
   <meta property="og:title" content="Studio Glubina — сайты для бизнеса" />
-  <meta property="og:description" content="Сайты для бизнеса с ежемесячной поддержкой. Запуск без большой оплаты за разработку." />
+  <meta property="og:description" content="Создаём сайты с продуманной структурой, современным дизайном, мобильной адаптацией и техническим сопровождением." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://studioglubina.ru/" />
+  <meta property="og:image" content="https://studioglubina.ru/images/logo.png" />
+  <meta property="og:image:alt" content="Логотип Studio Glubina" />
+  <meta property="og:site_name" content="Studio Glubina" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Studio Glubina — сайты для бизнеса" />
+  <meta name="twitter:description" content="Создаём сайты с продуманной структурой, современным дизайном, мобильной адаптацией и техническим сопровождением." />
+  <meta name="twitter:image" content="https://studioglubina.ru/images/logo.png" />
   <link rel="canonical" href="https://studioglubina.ru/" />
-  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Onest:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -160,6 +168,20 @@
     </div>
   </section>
 
+  <!-- ================= MANIFESTO -450m ================= -->
+  <section class="screen screen-tight manifesto" data-screen-label="Manifesto" data-depth="-450m" data-depth-label="Manifesto">
+    <div class="wrap">
+      <p class="eyebrow rv" style="margin-bottom:20px">Как мы работаем</p>
+      <h2 class="rv manifesto__title">Мы используем современные инструменты. Но не отдаём им творчество.</h2>
+      <div class="manifesto__body rv">
+        <p>Мы используем современные инструменты, чтобы ускорить разработку. Но каждый проект проходит через человека.</p>
+        <p>Мы анализируем бизнес, проектируем структуру, продумываем пользовательский путь, тестируем каждую страницу и дорабатываем детали до тех пор, пока сайт не станет действительно цельным.</p>
+        <p>Технологии помогают работать быстрее. Но они не принимают дизайнерские решения. Не чувствуют композицию. Не понимают особенности конкретного бизнеса. И не отвечают за конечный результат.</p>
+        <p>Именно поэтому каждый проект Studio Glubina создаётся человеком, который отвечает за качество каждого решения.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= PRICING -500m ================= -->
   <section class="screen screen-tight" id="pricing" data-screen-label="Pricing" data-depth="-500m" data-depth-label="Pricing">
     <div class="wrap">
@@ -222,21 +244,26 @@
         <p class="rv" style="margin-top:14px;text-align:center;color:var(--text-2);font-size:15px">Расскажите о задаче — мы предложим подходящий формат и рассчитаем стоимость.</p>
         <form class="abyss__form rv" id="leadForm" novalidate>
           <div class="field">
-            <input type="text" name="name" placeholder="Ваше имя" required />
+            <label class="sr-only" for="lead-name">Ваше имя</label>
+            <input id="lead-name" type="text" name="name" placeholder="Ваше имя" autocomplete="name" required />
             <span class="field__err" data-err-for="name"></span>
           </div>
           <div class="field">
-            <input type="text" name="contact" placeholder="Telegram или телефон" required />
+            <label class="sr-only" for="lead-contact">Telegram или телефон</label>
+            <input id="lead-contact" type="text" name="contact" placeholder="Telegram или телефон" autocomplete="tel" required />
             <span class="field__err" data-err-for="contact"></span>
           </div>
-          <input type="text" name="business" placeholder="Чем занимаетесь" />
-          <select name="siteType">
+          <label class="sr-only" for="lead-business">Чем занимаетесь</label>
+          <input id="lead-business" type="text" name="business" placeholder="Чем занимаетесь" autocomplete="organization" />
+          <label class="sr-only" for="lead-site-type">Какой сайт нужен</label>
+          <select id="lead-site-type" name="siteType">
             <option value="Пока не знаю">Какой сайт нужен? — Пока не знаю</option>
             <option value="Старт">Старт</option>
             <option value="Бизнес">Бизнес</option>
             <option value="Особый сайт">Особый сайт</option>
           </select>
-          <textarea name="message" placeholder="Коротко о задаче"></textarea>
+          <label class="sr-only" for="lead-message">Коротко о задаче</label>
+          <textarea id="lead-message" name="message" placeholder="Коротко о задаче"></textarea>
           <input type="text" name="website" autocomplete="off" tabindex="-1" style="display:none" aria-hidden="true" />
           <button type="submit" class="btn btn-primary">Отправить заявку</button>
         </form>
@@ -244,7 +271,7 @@
     </div>
   </section>
 
-  <div class="modal-overlay" id="thanksOverlay" aria-hidden="true">
+  <div class="modal-overlay" id="thanksOverlay" aria-hidden="true" role="presentation">
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="thanksTitle">
       <button class="modal-card__close" id="thanksClose" aria-label="Закрыть">×</button>
       <h3 id="thanksTitle">Спасибо!</h3>

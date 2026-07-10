@@ -156,6 +156,7 @@
 
   // ---------- form: Google Apps Script submit, inline validation, quiet confirmation ----------
   var GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxxg1qdwt8Bhl35-201WN6TiM3DJiSIiGCpHjyCxbEOIk-cm5djR4f0mqiPlJRXYrDC/exec';
+  function openThanksIfReady() { if (typeof window.__openThanksModal === 'function') window.__openThanksModal(); }
   var form = document.getElementById('leadForm');
   if (form) {
     var submitting = false;
@@ -188,8 +189,7 @@
       var honeypot = form.querySelector('[name="website"]');
       if (honeypot && honeypot.value) {
         form.reset();
-        var overlay0 = document.getElementById('thanksOverlay');
-        if (overlay0) overlay0.classList.add('show');
+        openThanksIfReady();
         return;
       }
 
@@ -216,8 +216,7 @@
       }).then(function () {
         form.reset();
         if (btn) { btn.disabled = false; btn.textContent = btnDefaultText; }
-        var overlay = document.getElementById('thanksOverlay');
-        if (overlay) overlay.classList.add('show');
+        openThanksIfReady();
         submitting = false;
       }).catch(function () {
         if (btn) { btn.disabled = false; btn.textContent = btnDefaultText; }
@@ -227,14 +226,28 @@
     });
   }
 
-  // ---------- thank-you modal: close on button, backdrop click, Esc ----------
+  // ---------- thank-you modal: close on button, backdrop click, Esc, manage focus ----------
   var thanksOverlay = document.getElementById('thanksOverlay');
   if (thanksOverlay) {
-    function closeThanks() { thanksOverlay.classList.remove('show'); }
     var thanksClose = document.getElementById('thanksClose');
+    var lastFocusedBeforeModal = null;
+    function openThanks() {
+      lastFocusedBeforeModal = document.activeElement;
+      thanksOverlay.classList.add('show');
+      thanksOverlay.setAttribute('aria-hidden', 'false');
+      if (thanksClose) thanksClose.focus();
+    }
+    function closeThanks() {
+      thanksOverlay.classList.remove('show');
+      thanksOverlay.setAttribute('aria-hidden', 'true');
+      if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') {
+        lastFocusedBeforeModal.focus();
+      }
+    }
     if (thanksClose) thanksClose.addEventListener('click', closeThanks);
     thanksOverlay.addEventListener('click', function (e) { if (e.target === thanksOverlay) closeThanks(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeThanks(); });
+    window.__openThanksModal = openThanks;
   }
 
   // preselect a plan when arriving from a tariff button (?plan=...)
