@@ -312,6 +312,11 @@ body.cursor-ready .cursor-dot{opacity:.85}
 .abyss .wrap.abyss__wrap--single .abyss__form{max-width:100%}
 .abyss .wrap.abyss__wrap--single .abyss__form .btn{align-self:center}
 .abyss__form input,.abyss__form select,.abyss__form textarea{background:transparent;border:none;border-bottom:1px solid var(--line-h);padding:12px 0;color:var(--text);font-family:inherit;font-size:16px;outline:none;transition:border-color .2s}
+.abyss__form .field{display:flex;flex-direction:column;gap:0}
+.abyss__form .field input{width:100%}
+.field__err{display:block;min-height:0;font-size:12.5px;color:#E4876F;opacity:0;max-height:0;transform:translateY(-4px);transition:opacity .3s var(--ease),transform .3s var(--ease),margin-top .3s var(--ease);pointer-events:none}
+.field__err.show{opacity:1;max-height:40px;margin-top:8px;transform:none}
+.abyss__form input.field-invalid,.abyss__form .field input.field-invalid{border-color:#E4876F}
 .abyss__form input:focus,.abyss__form select:focus,.abyss__form textarea:focus{border-color:var(--ice)}
 .abyss__form textarea{resize:vertical;min-height:64px}
 .abyss__form ::placeholder{color:var(--muted)}
@@ -347,3 +352,14 @@ body.cursor-ready .cursor-dot{opacity:.85}
 .footer__legal a{color:var(--muted)}
 .footer__legal a:hover{color:var(--text-2)}
 @media (max-width:640px){.footer__contacts{flex-direction:column;align-items:stretch}}
+
+/* ---------- thank-you modal ---------- */
+.modal-overlay{position:fixed;inset:0;z-index:400;background:rgba(5,5,6,.7);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.modal-overlay.show{opacity:1;pointer-events:auto}
+.modal-card{position:relative;width:100%;max-width:380px;background:var(--surface);border:1px solid var(--line-h);border-radius:18px;padding:40px 32px;text-align:center;transform:translateY(14px) scale(.98);transition:transform .35s var(--ease)}
+.modal-overlay.show .modal-card{transform:none}
+.modal-card h3{font-family:var(--ff-display);font-size:clamp(22px,2.6vw,28px);font-weight:500}
+.modal-card p{margin:14px 0 0;color:var(--text-2);font-size:15px;line-height:1.6}
+.modal-card__close{position:absolute;top:14px;right:14px;width:36px;height:36px;border:1px solid var(--line-h);border-radius:999px;background:transparent;color:var(--text);font-size:18px;line-height:1;cursor:pointer;transition:border-color .2s,color .2s}
+.modal-card__close:hover{border-color:var(--ice);color:var(--ice)}
+@media (prefers-reduced-motion:reduce){.modal-overlay,.modal-card{transition:none}}

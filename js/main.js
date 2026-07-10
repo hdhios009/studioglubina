@@ -154,37 +154,94 @@
   // background-tab safety net: rAF throttles heavily when the tab isn't focused
   setInterval(function () { lastY = -1; update(); }, 200);
 
-  // ---------- form: fade out, quiet confirmation ----------
+  // ---------- form: Google Apps Script submit, inline validation, quiet confirmation ----------
+  var GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxxg1qdwt8Bhl35-201WN6TiM3DJiSIiGCpHjyCxbEOIk-cm5djR4f0mqiPlJRXYrDC/exec';
   var form = document.getElementById('leadForm');
   if (form) {
+    var submitting = false;
+
+    function setFieldError(name, msg) {
+      var input = form.querySelector('[name="' + name + '"]');
+      var err = form.querySelector('.field__err[data-err-for="' + name + '"]');
+      if (input) input.classList.toggle('field-invalid', !!msg);
+      if (err) {
+        err.textContent = msg || '';
+        err.classList.toggle('show', !!msg);
+      }
+    }
+
+    function clearErrors() {
+      setFieldError('name', '');
+      setFieldError('contact', '');
+    }
+
+    ['name', 'contact'].forEach(function (n) {
+      var input = form.querySelector('[name="' + n + '"]');
+      if (input) input.addEventListener('input', function () { setFieldError(n, ''); });
+    });
+
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
+      if (submitting) return;
+
+      // honeypot: silently drop bots, look successful
+      var honeypot = form.querySelector('[name="website"]');
+      if (honeypot && honeypot.value) {
+        form.reset();
+        var overlay0 = document.getElementById('thanksOverlay');
+        if (overlay0) overlay0.classList.add('show');
+        return;
+      }
+
+      clearErrors();
+      var nameVal = (form.querySelector('[name="name"]').value || '').trim();
+      var contactVal = (form.querySelector('[name="contact"]').value || '').trim();
+      var hasError = false;
+      if (!nameVal) { setFieldError('name', 'Пожалуйста, укажите имя'); hasError = true; }
+      if (!contactVal) { setFieldError('contact', 'Укажите Telegram или телефон'); hasError = true; }
+      if (hasError) return;
+
       var btn = form.querySelector('button[type="submit"]');
-      if (btn) { btn.disabled = true; btn.textContent = 'Отправляю…'; }
-      fetch(form.action, {
+      var btnDefaultText = btn ? btn.textContent : '';
+      submitting = true;
+      if (btn) { btn.disabled = true; btn.textContent = 'Отправляем...'; }
+
+      var fd = new FormData(form);
+      fd.set('page', window.location.href);
+      fd.set('source', 'Studio Glubina Website');
+
+      fetch(GAS_ENDPOINT, {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      }).then(function (res) {
-        if (res.ok) {
-          document.getElementById('formWrap').querySelector('.abyss__form').classList.add('hide');
-          document.getElementById('formDone').classList.add('show');
-        } else {
-          if (btn) { btn.disabled = false; btn.textContent = 'Отправить заявку'; }
-          alert('Не удалось отправить. Попробуйте ещё раз или напишите в Telegram @hdhios007');
-        }
+        body: fd
+      }).then(function () {
+        form.reset();
+        if (btn) { btn.disabled = false; btn.textContent = btnDefaultText; }
+        var overlay = document.getElementById('thanksOverlay');
+        if (overlay) overlay.classList.add('show');
+        submitting = false;
       }).catch(function () {
-        if (btn) { btn.disabled = false; btn.textContent = 'Отправить заявку'; }
-        alert('Нет соединения. Попробуйте ещё раз или напишите в Telegram @hdhios007');
+        if (btn) { btn.disabled = false; btn.textContent = btnDefaultText; }
+        setFieldError('contact', 'Не удалось отправить. Попробуйте ещё раз или напишите в Telegram @hdhios007');
+        submitting = false;
       });
     });
+  }
+
+  // ---------- thank-you modal: close on button, backdrop click, Esc ----------
+  var thanksOverlay = document.getElementById('thanksOverlay');
+  if (thanksOverlay) {
+    function closeThanks() { thanksOverlay.classList.remove('show'); }
+    var thanksClose = document.getElementById('thanksClose');
+    if (thanksClose) thanksClose.addEventListener('click', closeThanks);
+    thanksOverlay.addEventListener('click', function (e) { if (e.target === thanksOverlay) closeThanks(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeThanks(); });
   }
 
   // preselect a plan when arriving from a tariff button (?plan=...)
   try {
     var p = new URLSearchParams(location.search).get('plan');
     if (p) {
-      var sel = document.querySelector('#leadForm select[name="Тариф"]');
+      var sel = document.querySelector('#leadForm select[name="siteType"]');
       if (sel) {
         for (var i = 0; i < sel.options.length; i++) {
           if (sel.options[i].value === p) { sel.selectedIndex = i; break; }

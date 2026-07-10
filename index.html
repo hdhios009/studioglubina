@@ -220,26 +220,37 @@
         <p class="eyebrow rv" style="text-align:center">Контакт</p>
         <h2 class="rv" style="margin-top:16px;text-align:center">Обсудим проект?</h2>
         <p class="rv" style="margin-top:14px;text-align:center;color:var(--text-2);font-size:15px">Расскажите о задаче — мы предложим подходящий формат и рассчитаем стоимость.</p>
-        <form class="abyss__form rv" id="leadForm" action="https://formspree.io/f/mbdvzpdp" method="POST">
-          <input type="text" name="Имя" placeholder="Ваше имя" required />
-          <input type="text" name="Контакт" placeholder="Telegram или телефон" required />
-          <input type="text" name="Ниша" placeholder="Чем занимаетесь" />
-          <select name="Тариф">
+        <form class="abyss__form rv" id="leadForm" novalidate>
+          <div class="field">
+            <input type="text" name="name" placeholder="Ваше имя" required />
+            <span class="field__err" data-err-for="name"></span>
+          </div>
+          <div class="field">
+            <input type="text" name="contact" placeholder="Telegram или телефон" required />
+            <span class="field__err" data-err-for="contact"></span>
+          </div>
+          <input type="text" name="business" placeholder="Чем занимаетесь" />
+          <select name="siteType">
             <option value="Пока не знаю">Какой сайт нужен? — Пока не знаю</option>
             <option value="Старт">Старт</option>
             <option value="Бизнес">Бизнес</option>
             <option value="Особый сайт">Особый сайт</option>
           </select>
-          <textarea name="Комментарий" placeholder="Коротко о задаче"></textarea>
+          <textarea name="message" placeholder="Коротко о задаче"></textarea>
+          <input type="text" name="website" autocomplete="off" tabindex="-1" style="display:none" aria-hidden="true" />
           <button type="submit" class="btn btn-primary">Отправить заявку</button>
         </form>
       </div>
-      <div class="abyss__done" id="formDone">
-        <h2>Увидимся на глубине.</h2>
-        <p style="color:var(--text-2);margin-top:16px">Свяжемся с вами в течение дня.</p>
-      </div>
     </div>
   </section>
+
+  <div class="modal-overlay" id="thanksOverlay" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="thanksTitle">
+      <button class="modal-card__close" id="thanksClose" aria-label="Закрыть">×</button>
+      <h3 id="thanksTitle">Спасибо!</h3>
+      <p>Мы получили заявку и скоро свяжемся с вами.</p>
+    </div>
+  </div>
 
   <!-- ================= FINAL CTA ================= -->
   <section class="cta-final" data-screen-label="Final CTA">
