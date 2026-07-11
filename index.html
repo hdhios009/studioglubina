@@ -3,9 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) {
+                return;
+            }
+        }
+        k=e.createElement(t),
+        a=e.getElementsByTagName(t)[0],
+        k.async=1,
+        k.src=r,
+        a.parentNode.insertBefore(k,a)
+    })(window, document, 'script',
+       'https://mc.yandex.ru/metrika/tag.js?id=110583575',
+       'ym');
+
+    ym(110583575, 'init', {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        referrer: document.referrer,
+        url: location.href,
+        accurateTrackBounce: true,
+        trackLinks: true
+    });
+  </script>
+  <!-- /Yandex.Metrika counter -->
   <title>Studio Glubina — сайты для бизнеса под ключ, с ежемесячной поддержкой</title>
   <meta name="description" content="Studio Glubina создаёт сайты для бизнеса: продуманная структура, современный дизайн, мобильная адаптация, формы заявок и техническое сопровождение. Запуск от 15 000 ₽." />
-  <meta name="author" content="Павлов Максим Дмитриевич" />
+
   <meta property="og:title" content="Studio Glubina — сайты для бизнеса" />
   <meta property="og:description" content="Создаём сайты с продуманной структурой, современным дизайном, мобильной адаптацией и техническим сопровождением." />
   <meta property="og:type" content="website" />
@@ -27,6 +57,17 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <!-- Yandex.Metrika noscript -->
+  <noscript>
+    <div>
+      <img
+          src="https://mc.yandex.ru/watch/110583575"
+          style="position:absolute; left:-9999px;"
+          alt=""
+      >
+    </div>
+  </noscript>
+  <!-- /Yandex.Metrika noscript -->
 
   <div class="grain" aria-hidden="true"></div>
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"><div class="cursor-dot__inner"></div></div>
@@ -319,5 +360,33 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+  (function(){
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('.price-card__btn').forEach(function(a){
+        a.addEventListener('click', function(){ if (window.ym) ym(110583575,'reachGoal','click_tariffs'); });
+      });
+      document.querySelectorAll('a[href*="t.me/"]').forEach(function(a){
+        a.addEventListener('click', function(){ if (window.ym) ym(110583575,'reachGoal','click_telegram'); });
+      });
+      document.querySelectorAll('a[href*="kotiksym"], a[href*="#case"]').forEach(function(a){
+        a.addEventListener('click', function(){ if (window.ym) ym(110583575,'reachGoal','click_case'); });
+      });
+      var contactEl = document.getElementById('contact');
+      if (contactEl && 'IntersectionObserver' in window) {
+        var firedOpen = false;
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(en){
+            if (en.isIntersecting && !firedOpen) { firedOpen = true; if (window.ym) ym(110583575,'reachGoal','open_lead_form'); io.disconnect(); }
+          });
+        }, {threshold:0.4});
+        io.observe(contactEl);
+      }
+      window.addEventListener('glubina:lead-success', function(){
+        if (window.ym) ym(110583575,'reachGoal','submit_lead_success');
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
