@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Разработка лендинга под ключ — Studio Glubina</title>
+  <meta name="description" content="Разрабатываем лендинги для услуг, продуктов и рекламного трафика: структура, дизайн, мобильная версия, формы заявок, аналитика и запуск." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Павлов Максим Дмитриевич" />
+  <meta property="og:title" content="Разработка лендинга под ключ — Studio Glubina" />
+  <meta property="og:description" content="Разрабатываем лендинги для услуг, продуктов и рекламного трафика: структура, дизайн, мобильная версия, формы заявок, аналитика и запуск." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://studioglubina.ru/landing-page/" />
+  <meta property="og:image" content="https://studioglubina.ru/images/logo.png" />
+  <meta property="og:image:alt" content="Логотип Studio Glubina" />
+  <meta property="og:site_name" content="Studio Glubina" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Разработка лендинга под ключ — Studio Glubina" />
+  <meta name="twitter:description" content="Разрабатываем лендинги для услуг, продуктов и рекламного трафика: структура, дизайн, мобильная версия, формы заявок, аналитика и запуск." />
+  <meta name="twitter:image" content="https://studioglubina.ru/images/logo.png" />
+  <link rel="canonical" href="https://studioglubina.ru/landing-page/" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Onest:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://studioglubina.ru/#org",
+        "name": "Studio Glubina",
+        "url": "https://studioglubina.ru/",
+        "logo": "https://studioglubina.ru/images/logo.png"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Главная","item":"https://studioglubina.ru/"},
+          {"@type":"ListItem","position":2,"name":"Лендинг","item":"https://studioglubina.ru/landing-page/"}
+        ]
+      },
+      {
+        "@type": "Service",
+        "name": "Лендинг",
+        "description": "Разрабатываем лендинги для услуг, продуктов и рекламного трафика: структура, дизайн, мобильная версия, формы заявок, аналитика и запуск.",
+        "provider": {"@id": "https://studioglubina.ru/#org"},
+        "areaServed": "RU",
+        "url": "https://studioglubina.ru/landing-page/"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [{"@type":"Question","name":"Чем лендинг отличается от обычного сайта?","acceptedAnswer":{"@type":"Answer","text":"Лендинг — это одна страница вокруг одного предложения, без множества разделов. Подходит для рекламы и быстрого запуска."}},{"@type":"Question","name":"Подойдёт ли лендинг для рекламного трафика?","acceptedAnswer":{"@type":"Answer","text":"Да, лендинг проектируется так, чтобы посетителю с рекламы было понятно предложение и как оставить заявку."}},{"@type":"Question","name":"Сколько стоит лендинг?","acceptedAnswer":{"@type":"Answer","text":"Тариф Старт — 7 000 ₽ + 1 490 ₽/мес — обычно закрывает задачи одностраничного лендинга. Для более сложной структуры подойдёт тариф Бизнес."}},{"@type":"Question","name":"Гарантируете ли вы рост заявок?","acceptedAnswer":{"@type":"Answer","text":"Мы отвечаем за структуру, дизайн и понятность страницы. Количество заявок также зависит от трафика и оффера, поэтому конкретный рост мы не обещаем."}},{"@type":"Question","name":"Можно ли потом расширить лендинг в полноценный сайт?","acceptedAnswer":{"@type":"Answer","text":"Да, структуру можно постепенно расширять — добавлять страницы и разделы."}},{"@type":"Question","name":"Нужна ли мобильная версия?","acceptedAnswer":{"@type":"Answer","text":"Да, мобильная адаптация обязательна — большая часть трафика приходит с телефона."}}]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"><div class="cursor-dot__inner"></div></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="lightsweep" aria-hidden="true"></div>
+  <div class="lamp-overlay" id="lampOverlay" aria-hidden="true"></div>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="../index.html" aria-label="Studio Glubina">
+        <img src="/images/logo.png" alt="Логотип Studio Glubina" />
+        <span class="brand__t"><span>ГЛУБИНА</span><i>web studio</i></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#case">Кейсы</a>
+        <a href="#process">Процесс</a>
+        <a href="#pricing">Цены</a>
+        <a href="#contact">Контакт</a>
+        <a class="btn btn-primary nav-cta" href="https://t.me/studioglubinabot" target="_blank" rel="noopener" style="height:44px;padding:0 22px;font-size:13px"><span class="nav-cta__label">Обсудить проект</span></a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mm-close" id="mmClose" aria-label="Закрыть">×</button>
+    <a href="../index.html#case">Кейсы</a>
+    <a href="#process">Процесс</a>
+    <a href="#pricing">Цены</a>
+    <a href="#contact">Контакт</a>
+    <a class="btn btn-primary nav-cta" href="https://t.me/studioglubinabot" target="_blank" rel="noopener"><span class="nav-cta__label">Обсудить проект</span></a>
+  </div>
+
+  <!-- ================= HERO ================= -->
+  <section class="screen svc-hero" data-screen-label="Hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Хлебные крошки"><a href="../index.html">Главная</a><span>/</span><span>Лендинг</span></nav>
+      <p class="eyebrow rv" style="margin-bottom:20px">Studio Glubina</p>
+      <h1 class="rv">Лендинг для одной услуги или продукта</h1>
+      <p class="svc-hero__sub rv">Собираем страницу вокруг одного предложения и ведём посетителя к понятному действию.</p>
+      <div class="svc-hero__cta rv">
+        <a class="btn btn-primary" href="#contact">Обсудить проект</a>
+        <a class="btn" href="#pricing">Посмотреть тарифы</a>
+      </div>
+      <div class="svc-audience rv" style="margin-top:40px">
+        <span>Запуск рекламы</span>
+          <span>Тест нового предложения</span>
+          <span>Одна услуга или продукт</span>
+          <span>Сбор заявок</span>
+          <span>Презентация продукта</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROBLEM ================= -->
+  <section class="screen-tight screen">
+    <div class="wrap">
+      <p class="eyebrow rv" style="margin-bottom:20px">Задача</p>
+      <h2 class="rv" style="font-size:clamp(26px,3.4vw,40px);max-width:700px;margin-bottom:36px">Когда нужен именно лендинг</h2>
+      <ul class="svc-list rv">
+            <li>Нужно продвигать одну услугу или продукт, а не весь бизнес целиком.</li>
+            <li>Запускаете рекламу и трафику некуда приходить с понятным действием.</li>
+            <li>Хотите быстро протестировать новое предложение.</li>
+            <li>Нужно быстро вывести проект в интернет без сложной многостраничной структуры.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= RESULT / WHAT'S INCLUDED ================= -->
+  <section class="screen-tight screen">
+    <div class="wrap">
+      <p class="eyebrow rv" style="margin-bottom:20px">Результат</p>
+      <h2 class="rv" style="font-size:clamp(26px,3.4vw,40px);max-width:700px;margin-bottom:36px">Как строится страница</h2>
+      <ul class="svc-list rv">
+            <li>Анализ аудитории и оффера — какое предложение и для кого.</li>
+            <li>Первый экран с сутью предложения без лишних слов.</li>
+            <li>Преимущества и доказательства — то, что важно посетителю.</li>
+            <li>Стоимость, FAQ и форма заявки.</li>
+            <li>Подключённая аналитика для отслеживания заявок.</li>
+      </ul>
+      <p class="rv" style="margin-top:24px;max-width:640px;font-size:14px;color:var(--text-2)">Структура страницы проектируется так, чтобы посетителю было проще понять предложение и оставить заявку.</p>
+    </div>
+  </section>
+
+  <!-- ================= WHO IT'S FOR ================= -->
+  <section class="screen-tight screen">
+    <div class="wrap">
+      <p class="eyebrow rv" style="margin-bottom:20px">Кому подходит</p>
+      <p class="rv" style="max-width:700px;font-size:16px;color:var(--text-2);line-height:1.75">Подходит для запуска рекламных кампаний, презентации одной услуги или продукта и быстрого выхода в интернет без сложной многостраничной структуры.</p>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="screen" id="process" data-screen-label="Process">
+    <div class="wrap">
+      <p class="eyebrow rv" style="text-align:center;margin-bottom:20px">Как проходит работа</p>
+      <div class="process" id="processLine">
+        <div class="process-traveler" id="processTraveler" aria-hidden="true"></div>
+        <div class="pstep"><span class="pstep__num">01</span><span class="pstep__dot"></span><div class="pstep__body"><h3>Разбор</h3><p>Изучаем нишу, задачу, аудиторию и путь клиента до заявки.</p></div></div>
+        <div class="pstep"><span class="pstep__num">02</span><span class="pstep__dot"></span><div class="pstep__body"><h3>Структура</h3><p>Продумываем первый экран, услуги, блоки доверия, цены, FAQ и точки контакта.</p></div></div>
+        <div class="pstep"><span class="pstep__num">03</span><span class="pstep__dot"></span><div class="pstep__body"><h3>Дизайн</h3><p>Создаём визуальную подачу и адаптируем интерфейс под разные устройства.</p></div></div>
+        <div class="pstep"><span class="pstep__num">04</span><span class="pstep__dot"></span><div class="pstep__body"><h3>Сборка</h3><p>Публикуем сайт, настраиваем формы и проверяем работу всех кнопок.</p></div></div>
+        <div class="pstep"><span class="pstep__num">05</span><span class="pstep__dot"></span><div class="pstep__body"><h3>Поддержка</h3><p>Обновляем информацию, вносим правки и следим за стабильной работой сайта.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MANIFESTO (short) ================= -->
+  <section class="screen-tight screen manifesto">
+    <div class="wrap">
+      <h2 class="rv manifesto__title" style="font-size:clamp(24px,3.2vw,38px)">Мы используем современные инструменты. Но не отдаём им творчество.</h2>
+      <p class="rv" style="margin-top:24px;max-width:640px;font-size:15px;color:var(--text-2);line-height:1.7">Технологии помогают ускорить работу. Структуру, дизайн и финальные решения принимает человек.</p>
+    </div>
+  </section>
+
+  <!-- ================= PRICING ================= -->
+  <section class="screen screen-tight" id="pricing" data-screen-label="Pricing">
+    <div class="wrap">
+      <p class="eyebrow rv" style="margin-bottom:20px">Форматы работы</p>
+      <h2 class="rv" style="font-size:clamp(28px,3.6vw,44px);max-width:640px;margin-bottom:56px">Оплачиваете запуск, дальше — ежемесячно</h2>
+      <div class="pricing-cards">
+        <div class="price-card rv">
+          <span class="price-card__badge">Старт</span>
+          <h3 class="price-card__name">Старт</h3>
+          <p class="price-card__desc">Для мастеров, экспертов и небольших услуг.</p>
+          <div class="price-card__cost"><span class="price-card__price">7 000 ₽</span><span class="price-card__mo">+ 1 490 ₽/мес</span></div>
+          <ul class="price-card__feat"><li>1 страница</li><li>Telegram/WhatsApp</li><li>адаптация под телефон</li><li>1 правка в месяц</li></ul>
+          <a class="btn price-card__btn" href="https://t.me/studioglubinabot?start=start" target="_blank" rel="noopener">Выбрать тариф</a>
+        </div>
+        <div class="price-card price-card--featured rv">
+          <span class="price-card__badge price-card__badge--featured">Рекомендуемый тариф</span>
+          <h3 class="price-card__name">Бизнес</h3>
+          <p class="price-card__desc">Для студий, сервисов, центров и локального бизнеса.</p>
+          <div class="price-card__cost"><span class="price-card__price">15 000 ₽</span><span class="price-card__mo">+ 2 490 ₽/мес</span></div>
+          <ul class="price-card__feat"><li>Сильный первый экран</li><li>Отзывы, FAQ, форма заявки</li><li>Современные анимации</li><li>2–3 правки в месяц</li></ul>
+          <a class="btn btn-primary price-card__btn" href="https://t.me/studioglubinabot?start=business" target="_blank" rel="noopener">Выбрать тариф</a>
+        </div>
+        <div class="price-card rv">
+          <span class="price-card__badge price-card__badge--premium">Premium</span>
+          <h3 class="price-card__name">Особый сайт</h3>
+          <p class="price-card__desc">Для проектов с индивидуальной разработкой и нестандартными задачами.</p>
+          <div class="price-card__cost"><span class="price-card__price"><span class="price-card__from">от</span> 20 000 ₽</span><span class="price-card__mo"><span class="price-card__from">от</span> 3 990 ₽/мес</span></div>
+          <ul class="price-card__feat"><li>Полностью индивидуальный дизайн</li><li>Сложные анимации и интерактив</li><li>Интеграции с API и сервисами</li><li>Каталоги, фильтры, личные кабинеты</li><li>Приоритетная поддержка</li></ul>
+          <a class="btn price-card__btn" href="https://t.me/studioglubinabot?start=custom" target="_blank" rel="noopener">Выбрать тариф</a>
+        </div>
+      </div>
+      <p class="rv" style="margin-top:32px;max-width:640px;font-size:13px;color:var(--muted)">Точная стоимость определяется после обсуждения объёма и сложности задачи.</p>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="screen screen-tight" id="faq" data-screen-label="FAQ">
+    <div class="wrap">
+      <p class="eyebrow rv" style="margin-bottom:56px">Вопросы</p>
+      <div class="interview">
+        <div class="qa rv"><div class="q">Чем лендинг отличается от обычного сайта?</div><div class="a">Лендинг — это одна страница вокруг одного предложения, без множества разделов. Подходит для рекламы и быстрого запуска.</div></div>
+        <div class="qa rv"><div class="q">Подойдёт ли лендинг для рекламного трафика?</div><div class="a">Да, лендинг проектируется так, чтобы посетителю с рекламы было понятно предложение и как оставить заявку.</div></div>
+        <div class="qa rv"><div class="q">Сколько стоит лендинг?</div><div class="a">Тариф Старт — 7 000 ₽ + 1 490 ₽/мес — обычно закрывает задачи одностраничного лендинга. Для более сложной структуры подойдёт тариф Бизнес.</div></div>
+        <div class="qa rv"><div class="q">Гарантируете ли вы рост заявок?</div><div class="a">Мы отвечаем за структуру, дизайн и понятность страницы. Количество заявок также зависит от трафика и оффера, поэтому конкретный рост мы не обещаем.</div></div>
+        <div class="qa rv"><div class="q">Можно ли потом расширить лендинг в полноценный сайт?</div><div class="a">Да, структуру можно постепенно расширять — добавлять страницы и разделы.</div></div>
+        <div class="qa rv"><div class="q">Нужна ли мобильная версия?</div><div class="a">Да, мобильная адаптация обязательна — большая часть трафика приходит с телефона.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RELATED SERVICES ================= -->
+  <section class="screen-tight screen">
+    <div class="wrap">
+      <p class="eyebrow rv" style="margin-bottom:28px">Другие услуги Studio Glubina</p>
+      <div class="related rv">
+        <a href="../sozdanie-saitov/"><b>Создание сайтов</b><span>От структуры и дизайна до публикации, формы заявок и дальнейшего сопровождения.</span></a>
+        <a href="../redizayn-sayta/"><b>Редизайн сайта</b><span>Сохраняем сильные стороны проекта и перерабатываем то, что мешает доверию, удобству и заявкам.</span></a>
+        <a href="../podderzhka-sayta/"><b>Поддержка сайта</b><span>Следим за работоспособностью, обновляем информацию и помогаем сайту развиваться вместе с бизнесом.</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="abyss" id="contact" data-screen-label="Contact">
+    <div class="wrap abyss__wrap--single">
+      <div id="formWrap">
+        <p class="eyebrow rv" style="text-align:center">Контакт</p>
+        <h2 class="rv" style="margin-top:16px;text-align:center">Обсудим проект?</h2>
+        <p class="rv" style="margin-top:14px;text-align:center;color:var(--text-2);font-size:15px">Расскажите о задаче — мы предложим подходящий формат и рассчитаем стоимость.</p>
+        <form class="abyss__form rv" id="leadForm" novalidate>
+          <div class="field">
+            <label class="sr-only" for="lead-name">Ваше имя</label>
+            <input id="lead-name" type="text" name="name" placeholder="Ваше имя" autocomplete="name" required />
+            <span class="field__err" data-err-for="name"></span>
+          </div>
+          <div class="field">
+            <label class="sr-only" for="lead-contact">Telegram или телефон</label>
+            <input id="lead-contact" type="text" name="contact" placeholder="Telegram или телефон" autocomplete="tel" required />
+            <span class="field__err" data-err-for="contact"></span>
+          </div>
+          <label class="sr-only" for="lead-business">Чем занимаетесь</label>
+          <input id="lead-business" type="text" name="business" placeholder="Чем занимаетесь" autocomplete="organization" />
+          <label class="sr-only" for="lead-site-type">Какой сайт нужен</label>
+          <select id="lead-site-type" name="siteType">
+            <option value="Пока не знаю">Какой сайт нужен? — Пока не знаю</option>
+            <option value="Старт">Старт</option>
+            <option value="Бизнес">Бизнес</option>
+            <option value="Особый сайт">Особый сайт</option>
+          </select>
+          <label class="sr-only" for="lead-message">Коротко о задаче</label>
+          <textarea id="lead-message" name="message" placeholder="Коротко о задаче"></textarea>
+          <input type="hidden" name="service" value="Лендинг" />
+          <input type="text" name="website" autocomplete="off" tabindex="-1" style="display:none" aria-hidden="true" />
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="thanksOverlay" aria-hidden="true" role="presentation">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="thanksTitle">
+      <button class="modal-card__close" id="thanksClose" aria-label="Закрыть">×</button>
+      <h3 id="thanksTitle">Спасибо!</h3>
+      <p>Мы получили заявку и скоро свяжемся с вами.</p>
+    </div>
+  </div>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="cta-final" data-screen-label="Final CTA">
+    <div class="wrap">
+      <h2 class="rv">Есть идея для сайта?</h2>
+      <p class="rv">Сделаем современный сайт, который выделит вас среди конкурентов и будет приносить клиентов.</p>
+      <a class="btn btn-primary cta-final__btn rv" href="https://t.me/studioglubinabot" target="_blank" rel="noopener">Обсудить проект</a>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="wrap">
+      <a href="../index.html"><img src="/images/logo.png" alt="Studio Glubina" /></a>
+      <p class="footer__line">Studio Glubina — сайты для бизнеса и специалистов.</p>
+      <p class="footer__services">
+        <a href="../sozdanie-saitov/">Создание сайтов</a>
+        <a href="../landing-page/">Лендинг</a>
+        <a href="../korporativnyy-sayt/">Корпоративный сайт</a>
+        <a href="../redizayn-sayta/">Редизайн сайта</a>
+        <a href="../podderzhka-sayta/">Поддержка сайта</a>
+      </p>
+      <div class="footer__contacts">
+        <a class="footer__contact" href="https://t.me/studioglubinabot" target="_blank" rel="noopener">
+          <span class="footer__contact-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M21 4L2.5 11.5c-.9.36-.9 1.6 0 1.95l4.7 1.7 1.7 5.4c.3.95 1.5 1.15 2.1.35l2.5-3.2 4.9 3.6c.8.6 1.95.15 2.15-.85l3.2-15.4c.2-1-.75-1.8-1.75-1.45z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8.5 15.5l9-8-7.3 9.4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+          <span class="footer__contact-text"><span class="footer__contact-label">Telegram-бот</span><span class="footer__contact-value">@studioglubinabot</span></span>
+        </a>
+        <a class="footer__contact" href="https://t.me/hdhios007" target="_blank" rel="noopener">
+          <span class="footer__contact-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M21 4L2.5 11.5c-.9.36-.9 1.6 0 1.95l4.7 1.7 1.7 5.4c.3.95 1.5 1.15 2.1.35l2.5-3.2 4.9 3.6c.8.6 1.95.15 2.15-.85l3.2-15.4c.2-1-.75-1.8-1.75-1.45z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8.5 15.5l9-8-7.3 9.4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+          <span class="footer__contact-text"><span class="footer__contact-label">Лично</span><span class="footer__contact-value">@hdhios007</span></span>
+        </a>
+        <a class="footer__contact" href="mailto:studio.glubina@gmail.com">
+          <span class="footer__contact-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5.5" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+          <span class="footer__contact-text"><span class="footer__contact-label">E-mail</span><span class="footer__contact-value">studio.glubina@gmail.com</span></span>
+        </a>
+      </div>
+      <p class="footer__legal">© 2026 Studio Glubina · Самозанятый Павлов М. Д. · ИНН 410122142698 · <a href="../privacy.html">Политика конфиденциальности</a></p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+  (function(){
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+     m[i].l=1*new Date();
+     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=110583575", "ym");
+    ym(110583575, "init", {ssr:true, webvisor:true, clickmap:true, accurateTrackBounce:true, trackLinks:true});
+
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('.price-card__btn').forEach(function(a){
+        a.addEventListener('click', function(){ if (window.ym) ym(110583575,'reachGoal','click_tariffs'); });
+      });
+      document.querySelectorAll('a[href*="t.me/"]').forEach(function(a){
+        a.addEventListener('click', function(){ if (window.ym) ym(110583575,'reachGoal','click_telegram'); });
+      });
+      document.querySelectorAll('a[href*="kotiksym"], a[href*="#case"]').forEach(function(a){
+        a.addEventListener('click', function(){ if (window.ym) ym(110583575,'reachGoal','click_case'); });
+      });
+      var contactEl = document.getElementById('contact');
+      if (contactEl && 'IntersectionObserver' in window) {
+        var firedOpen = false;
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(en){
+            if (en.isIntersecting && !firedOpen) { firedOpen = true; if (window.ym) ym(110583575,'reachGoal','open_lead_form'); io.disconnect(); }
+          });
+        }, {threshold:0.4});
+        io.observe(contactEl);
+      }
+      window.addEventListener('glubina:lead-success', function(){
+        if (window.ym) ym(110583575,'reachGoal','submit_lead_success');
+      });
+    });
+  })();
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/110583575" style="position:absolute;left:-9999px" alt="" /></div></noscript>
+</body>
+</html>
