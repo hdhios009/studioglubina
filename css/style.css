@@ -322,9 +322,12 @@ body.cursor-ready .cursor-dot{opacity:.85}
 .price-card__name{font-family:var(--ff-display);font-size:clamp(22px,2.4vw,28px)}
 .price-card__desc{color:var(--text-2);font-size:13.5px;margin-top:10px;min-height:40px}
 .price-card__cost{margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
-.price-card__price{display:block;font-family:var(--ff-display);font-size:clamp(32px,3.4vw,42px)}
+.price-card__cost-label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.price-card__price{display:block;margin-top:8px;font-family:var(--ff-display);font-size:clamp(32px,3.4vw,42px)}
 .price-card__from{font-family:var(--ff-body);font-size:15px;font-weight:500;color:var(--text-2);margin-right:4px}
-.price-card__mo{display:block;color:var(--text-2);font-size:13px;margin-top:6px}
+.price-card__mo-label{display:block;margin-top:18px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.price-card__mo{display:block;color:var(--text);font-size:16px;font-weight:500;margin-top:6px}
+.price-card__term{margin-top:14px;font-size:12.5px;color:var(--muted)}
 .price-card__feat{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px;font-size:13.5px;color:var(--text-2);flex:1}
 .price-card__feat li{position:relative;padding-left:24px}
 .price-card__feat li::before{content:"✓";position:absolute;left:0;top:-1px;font-size:12px;font-weight:600;color:var(--ice)}
@@ -441,7 +444,3 @@ body.cursor-ready .cursor-dot{opacity:.85}
 .modal-card__close{position:absolute;top:14px;right:14px;width:36px;height:36px;border:1px solid var(--line-h);border-radius:999px;background:transparent;color:var(--text);font-size:18px;line-height:1;cursor:pointer;transition:border-color .2s,color .2s}
 .modal-card__close:hover{border-color:var(--ice);color:var(--ice)}
 @media (prefers-reduced-motion:reduce){.modal-overlay,.modal-card{transition:none}}
-
-/* ---- SEO subhead (added by optimization) ---- */
-.surface__seo-sub{margin:16px 0 0;max-width:540px;font-size:clamp(14px,1.4vw,17px);color:var(--text);font-weight:600;letter-spacing:-0.01em}
-.surface__seo-desc{margin:6px 0 0;max-width:540px;font-size:clamp(13px,1.2vw,15px);color:var(--text-2);line-height:1.6}
