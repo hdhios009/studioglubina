@@ -253,6 +253,89 @@
     window.__openThanksModal = openThanks;
   }
 
+  // ---------- tariff cards: toggle deatils, business chat links, analytics ----------
+  var TELEGRAM_TARIFF_LINKS = {
+    start: "https://t.me/studioglubinabot?start=tariff_start",
+    business: "https://t.me/studioglubinabot?start=tariff_business",
+    special: "https://t.me/studioglubinabot?start=tariff_special"
+  };
+
+  var TARIFF_META = {
+    start:   { name: "Старт",       launch: 15000,  monthly: 2490 },
+    business:{ name: "Бизнес",      launch: 35000,  monthly: 4990 },
+    special: { name: "Особый сайт", launch: 60000,  monthly: 6990 }
+  };
+
+  function sendYametrikaGoal(goalName) {
+    try { if (typeof ym === 'function') { ym(110583575, 'reachGoal', goalName); } } catch (e) {}
+    try {
+      if (window.dataLayer) { window.dataLayer.push({ event: goalName }); }
+    } catch (e) {}
+  }
+
+  function logTariffAnalytics(tariffKey) {
+    var meta = TARIFF_META[tariffKey];
+    if (!meta) return;
+    try {
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: 'tariff_click',
+          tariff_name: meta.name,
+          launch_price: meta.launch,
+          monthly_price: meta.monthly,
+          source_page: window.location.pathname
+        });
+      }
+    } catch (e) {}
+  }
+
+  // Telegram bot fallback link
+  var BOT_TARIFF_LINKS = {
+    start:    'https://t.me/studioglubinabot?start=tariff_start',
+    business: 'https://t.me/studioglubinabot?start=tariff_business',
+    special:  'https://t.me/studioglubinabot?start=tariff_special'
+  };
+
+  function openTariffChat(tariffKey) {
+    var goalName = 'tariff_' + tariffKey + '_click';
+    sendYametrikaGoal(goalName);
+    logTariffAnalytics(tariffKey);
+
+    var bizLink = TELEGRAM_TARIFF_LINKS[tariffKey];
+    if (bizLink && bizLink.startsWith('http')) {
+      window.open(bizLink, '_blank', 'noopener,noreferrer');
+    } else {
+      // fallback to bot
+      window.open(BOT_TARIFF_LINKS[tariffKey] || BOT_TARIFF_LINKS.start, '_blank', 'noopener,noreferrer');
+    }
+  }
+
+  [].slice.call(document.querySelectorAll('[data-tariff-action]')).forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      var action = btn.getAttribute('data-tariff-action');
+      if (action === 'bot_selection') {
+        sendYametrikaGoal('tariff_bot_selection_click');
+        window.open('https://t.me/studioglubinabot?start=tariff_selection', '_blank', 'noopener,noreferrer');
+        return;
+      }
+      openTariffChat(action);
+    });
+  });
+
+  // Toggle details
+  [].slice.call(document.querySelectorAll('.price-card__toggle')).forEach(function (tog) {
+    tog.addEventListener('click', function (e) {
+      e.preventDefault();
+      var expanded = tog.getAttribute('aria-expanded') === 'true';
+      tog.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      var details = tog.parentNode.querySelector('.price-card__details');
+      if (details) {
+        details.hidden = expanded;
+      }
+      // animate height
+    });
+  });
+
   // preselect a plan when arriving from a tariff button (?plan=...)
   try {
     var p = new URLSearchParams(location.search).get('plan');

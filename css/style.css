@@ -332,6 +332,26 @@ body.cursor-ready .cursor-dot{opacity:.85}
 .price-card__feat li{position:relative;padding-left:24px}
 .price-card__feat li::before{content:"✓";position:absolute;left:0;top:-1px;font-size:12px;font-weight:600;color:var(--ice)}
 .price-card__btn{margin-top:32px;width:100%}
+.price-card__btn--tg{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 20px;line-height:1.2}
+.price-card__btn--tg .btn__sub{display:block;font-size:10.5px;font-weight:400;opacity:.65;white-space:normal}
+.price-card__section{margin-top:24px;border-top:1px solid var(--line);padding-top:14px}
+.price-card__toggle{display:flex;align-items:center;gap:8px;width:100%;background:none;border:none;padding:0;cursor:pointer;color:var(--text-2);font-size:12px;letter-spacing:.02em;text-align:left;transition:color .25s}
+.price-card__toggle:hover{color:var(--text)}
+.price-card__toggle[aria-expanded="true"] .price-card__chevron{transform:rotate(180deg)}
+.price-card__chevron{flex-shrink:0;transition:transform .3s var(--ease)}
+.price-card__details{display:grid;gap:20px;padding-top:16px}
+.price-card__details[hidden]{display:none}
+.price-card__detail-group h4{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.price-card__detail-group .price-card__feat{margin:0;gap:8px}
+.price-card__detail-group .price-card__feat li{font-size:12.5px}
+.price-card__bot-link{display:block;text-align:center;margin-top:32px;font-size:14px;color:var(--ice);text-decoration:none;transition:opacity .25s}
+.price-card__bot-link:hover{opacity:.75;text-decoration:underline}
+.pricing-legal{max-width:640px;margin-top:40px;display:grid;gap:8px}
+.pricing-legal__item{font-size:12px;color:var(--muted);margin:0;line-height:1.5}
+@media (max-width:520px){
+  .price-card__btn--tg{padding:13px 16px;font-size:13px}
+  .pricing-legal{margin-top:28px}
+}
 @media (max-width:900px){
   .pricing-cards{grid-template-columns:1fr;max-width:460px;margin:0 auto}
   .price-card{width:100%}

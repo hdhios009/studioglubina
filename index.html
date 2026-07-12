@@ -221,39 +221,186 @@
   </section>
 
   <!-- ================= PRICING -500m ================= -->
+  <!-- ================= PRICING -500m ================= -->
   <section class="screen screen-tight" id="pricing" data-screen-label="Pricing" data-depth="-500m" data-depth-label="Pricing">
     <div class="wrap">
       <p class="eyebrow rv" style="margin-bottom:20px">Форматы работы</p>
       <h2 class="rv" style="font-size:clamp(28px,3.6vw,44px);max-width:640px;margin-bottom:56px">Оплачиваете запуск, дальше — ежемесячно</h2>
+
       <div class="pricing-cards">
-        <div class="price-card rv">
+        <!-- ================ ТАРИФ СТАРТ ================ -->
+        <div class="price-card rv" data-tariff="start">
           <span class="price-card__badge">Старт</span>
           <h3 class="price-card__name">Старт</h3>
           <p class="price-card__desc">Для мастеров, экспертов и небольших услуг.</p>
-          <div class="price-card__cost"><span class="price-card__cost-label">Разработка сайта</span><span class="price-card__price">15 000 ₽</span><span class="price-card__mo-label">Техническое сопровождение</span><span class="price-card__mo">2 490 ₽/мес</span></div><p class="price-card__term">Минимальный срок сопровождения — 3 месяца</p>
-          <ul class="price-card__feat"><li>1 страница</li><li>Telegram/WhatsApp</li><li>адаптация под телефон</li><li>1 правка в месяц</li></ul>
-          <a class="btn price-card__btn" href="#contact">Выбрать тариф</a>
+
+          <div class="price-card__cost">
+            <span class="price-card__cost-label">Разработка сайта</span>
+            <span class="price-card__price">15 000 ₽</span>
+            <span class="price-card__mo-label">Техническое сопровождение</span>
+            <span class="price-card__mo">2 490 ₽/мес</span>
+          </div>
+          <p class="price-card__term">Минимальный срок сопровождения — 3 месяца</p>
+
+          <div class="price-card__section">
+            <button class="price-card__toggle" aria-expanded="false">
+              <span>Что входит в разработку и сопровождение</span>
+              <svg class="price-card__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="price-card__details" hidden>
+              <div class="price-card__detail-group">
+                <h4>В разработку входит</h4>
+                <ul class="price-card__feat">
+                  <li>Одностраничный сайт</li>
+                  <li>Структура страницы</li>
+                  <li>Адаптация под телефон</li>
+                  <li>Кнопки Telegram и WhatsApp</li>
+                  <li>Публикация сайта</li>
+                </ul>
+              </div>
+              <div class="price-card__detail-group">
+                <h4>В ежемесячное сопровождение входит</h4>
+                <ul class="price-card__feat">
+                  <li>Размещение сайта</li>
+                  <li>Домен под управлением Studio Glubina</li>
+                  <li>Техническое управление</li>
+                  <li>Контроль работы сайта</li>
+                  <li>Одна небольшая правка в месяц</li>
+                  <li>Поддержка после запуска</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn price-card__btn price-card__btn--tg" data-tariff-action="start">
+            Выбрать Старт
+            <span class="btn__sub">Откроется Telegram с готовым сообщением</span>
+          </button>
         </div>
-        <div class="price-card price-card--featured rv">
+
+        <!-- ================ ТАРИФ БИЗНЕС ================ -->
+        <div class="price-card price-card--featured rv" data-tariff="business">
           <span class="price-card__badge price-card__badge--featured">Рекомендуемый тариф</span>
           <h3 class="price-card__name">Бизнес</h3>
           <p class="price-card__desc">Для студий, сервисов, центров и локального бизнеса.</p>
-          <div class="price-card__cost"><span class="price-card__cost-label">Разработка сайта</span><span class="price-card__price">35 000 ₽</span><span class="price-card__mo-label">Техническое сопровождение</span><span class="price-card__mo">4 990 ₽/мес</span></div><p class="price-card__term">Минимальный срок сопровождения — 6 месяцев</p>
-          <ul class="price-card__feat"><li>Сильный первый экран</li><li>Отзывы, FAQ, форма заявки</li><li>Современные анимации</li><li>2–3 правки в месяц</li></ul>
-          <a class="btn btn-primary price-card__btn" href="#contact">Выбрать тариф</a>
+
+          <div class="price-card__cost">
+            <span class="price-card__cost-label">Разработка сайта</span>
+            <span class="price-card__price">35 000 ₽</span>
+            <span class="price-card__mo-label">Техническое сопровождение</span>
+            <span class="price-card__mo">4 990 ₽/мес</span>
+          </div>
+          <p class="price-card__term">Минимальный срок сопровождения — 6 месяцев</p>
+
+          <div class="price-card__section">
+            <button class="price-card__toggle" aria-expanded="false">
+              <span>Что входит в разработку и сопровождение</span>
+              <svg class="price-card__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="price-card__details" hidden>
+              <div class="price-card__detail-group">
+                <h4>В разработку входит</h4>
+                <ul class="price-card__feat">
+                  <li>Сильный первый экран</li>
+                  <li>Продуманная структура</li>
+                  <li>Блоки услуг и преимуществ</li>
+                  <li>Отзывы</li>
+                  <li>FAQ</li>
+                  <li>Форма заявки</li>
+                  <li>Современные анимации</li>
+                  <li>Адаптация под телефон</li>
+                  <li>Публикация сайта</li>
+                </ul>
+              </div>
+              <div class="price-card__detail-group">
+                <h4>В ежемесячное сопровождение входит</h4>
+                <ul class="price-card__feat">
+                  <li>Размещение сайта</li>
+                  <li>Домен под управлением Studio Glubina</li>
+                  <li>Техническое управление</li>
+                  <li>Обновление текстов, цен, контактов и фотографий</li>
+                  <li>2–3 небольшие правки в месяц</li>
+                  <li>Контроль кнопок и форм</li>
+                  <li>Поддержка после запуска</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary price-card__btn price-card__btn--tg" data-tariff-action="business">
+            Выбрать Бизнес
+            <span class="btn__sub">Откроется Telegram с готовым сообщением</span>
+          </button>
         </div>
-        <div class="price-card rv">
-          <span class="price-card__badge price-card__badge--premium">Premium</span>
+
+        <!-- ================ ТАРИФ ОСОБЫЙ САЙТ ================ -->
+        <div class="price-card rv" data-tariff="special">
+          <span class="price-card__badge">Особый сайт</span>
           <h3 class="price-card__name">Особый сайт</h3>
           <p class="price-card__desc">Для проектов с индивидуальной разработкой и нестандартными задачами.</p>
-          <div class="price-card__cost"><span class="price-card__cost-label">Разработка сайта</span><span class="price-card__price"><span class="price-card__from">от</span> 60 000 ₽</span><span class="price-card__mo-label">Техническое сопровождение</span><span class="price-card__mo">6 990 ₽/мес</span></div><p class="price-card__term">Минимальный срок сопровождения — 6 месяцев</p>
-          <ul class="price-card__feat"><li>Полностью индивидуальный дизайн</li><li>Сложные анимации и интерактив</li><li>Интеграции с API и сервисами</li><li>Каталоги, фильтры, личные кабинеты</li><li>Приоритетная поддержка</li></ul>
-          <a class="btn price-card__btn" href="#contact">Выбрать тариф</a>
+
+          <div class="price-card__cost">
+            <span class="price-card__cost-label">Разработка сайта</span>
+            <span class="price-card__price"><span class="price-card__from">от</span> 60 000 ₽</span>
+            <span class="price-card__mo-label">Техническое сопровождение</span>
+            <span class="price-card__mo">6 990 ₽/мес</span>
+          </div>
+          <p class="price-card__term">Минимальный срок сопровождения — 6 месяцев</p>
+
+          <div class="price-card__section">
+            <button class="price-card__toggle" aria-expanded="false">
+              <span>Что входит в разработку и сопровождение</span>
+              <svg class="price-card__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="price-card__details" hidden>
+              <div class="price-card__detail-group">
+                <h4>В разработку входит</h4>
+                <ul class="price-card__feat">
+                  <li>Полностью индивидуальный дизайн</li>
+                  <li>Сложные анимации и интерактив</li>
+                  <li>Интеграции с API и внешними сервисами</li>
+                  <li>Каталоги</li>
+                  <li>Фильтры</li>
+                  <li>Личные кабинеты при необходимости</li>
+                  <li>Адаптация под телефон</li>
+                  <li>Приоритетная разработка</li>
+                </ul>
+              </div>
+              <div class="price-card__detail-group">
+                <h4>В ежемесячное сопровождение входит</h4>
+                <ul class="price-card__feat">
+                  <li>Размещение сайта</li>
+                  <li>Домен под управлением Studio Glubina</li>
+                  <li>Техническое управление</li>
+                  <li>Согласованный объём обновлений</li>
+                  <li>Приоритетная поддержка</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn price-card__btn price-card__btn--tg" data-tariff-action="special">
+            Обсудить особый сайт
+            <span class="btn__sub">Откроется Telegram с готовым сообщением</span>
+          </button>
         </div>
       </div>
-      <p class="rv" style="margin-top:32px;max-width:640px;font-size:13px;color:var(--muted)">Итоговая стоимость рассчитывается индивидуально и зависит от сложности проекта, количества страниц, необходимых интеграций и функциональности.</p>
-      <p class="rv" style="margin-top:12px;max-width:640px;font-size:13px;color:var(--muted)">Домен, размещение и техническое управление остаются у Studio Glubina на время ежемесячной модели. Выкуп сайта и домена в собственность — отдельно.</p>
-      <a class="btn btn-primary rv" style="margin-top:32px" href="#contact">Подобрать тариф в боте</a>
+
+      <!-- ================ ЮРИДИЧЕСКАЯ ИНФОРМАЦИЯ ================ -->
+      <div class="pricing-legal rv">
+        <p class="pricing-legal__item">
+          Итоговая стоимость зависит от количества страниц, функциональности, интеграций и сложности проекта.
+        </p>
+        <p class="pricing-legal__item">
+          Домен, размещение и техническое управление остаются у Studio Glubina на время ежемесячной модели.
+          Выкуп сайта и домена в собственность обсуждается отдельно.
+        </p>
+      </div>
+
+      <!-- ================ РЕЗЕРВНЫЙ ПЕРЕХОД В БОТА ================ -->
+      <a class="price-card__bot-link rv" href="https://t.me/studioglubinabot?start=tariff_selection" target="_blank" rel="noopener noreferrer" data-tariff-action="bot_selection">
+        Не уверены, какой тариф выбрать? Подобрать в Telegram-боте
+      </a>
     </div>
   </section>
 
