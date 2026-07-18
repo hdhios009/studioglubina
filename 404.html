@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Страница не найдена — Studio Glubina</title>
+  <meta name="description" content="Страница не найдена. Вернитесь на главную Studio Glubina." />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://studioglubina.ru/404.html" />
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Onest:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    .err404{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:120px 0 80px;
+      text-align:center;
+    }
+    .err404__code{
+      font-family:var(--ff-display);
+      font-size:clamp(96px,18vw,180px);
+      font-weight:500;
+      letter-spacing:-.04em;
+      line-height:1;
+      color:var(--text);
+      margin:0;
+    }
+    .err404__text{
+      margin:20px auto 0;
+      max-width:36ch;
+      color:var(--text-2);
+      font-size:clamp(16px,2.2vw,18px);
+      line-height:1.6;
+    }
+    .err404__cta{margin-top:36px}
+    @media (prefers-reduced-motion:reduce){
+      .err404__code,.err404__text,.err404__cta{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav stuck" id="nav">
+    <div class="wrap">
+      <a class="brand" href="./index.html" aria-label="Studio Glubina">
+        <img src="./images/logo.png" alt="Логотип Studio Glubina" width="40" height="40" />
+        <span class="brand__t"><span>ГЛУБИНА</span><i>web studio</i></span>
+      </a>
+      <nav class="nav-links">
+        <a class="btn btn-primary nav-cta" href="./index.html"><span class="nav-cta__label">На главную</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="err404">
+    <div class="wrap">
+      <p class="err404__code" aria-hidden="true">404</p>
+      <h1 class="sr-only">Страница не найдена</h1>
+      <p class="err404__text">Такой страницы нет. Возможно, ссылка устарела или адрес введён с ошибкой.</p>
+      <div class="err404__cta">
+        <a class="btn btn-primary" href="./index.html">Вернуться на главную</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

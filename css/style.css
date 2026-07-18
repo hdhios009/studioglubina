@@ -204,8 +204,8 @@ body.cursor-ready .cursor-dot{opacity:.85}
 }
 
 /* ---------- reveal (fade+translate only) ---------- */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.rv.in{opacity:1;transform:none}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .4s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:translateY(0)}
 @media (prefers-reduced-motion:reduce){.rv,.surface__text,.surface__cta,.surface__visual{opacity:1!important;transform:none!important;transition:none!important;clip-path:none!important}}
 
 /* ---------- case studies: split full-bleed ---------- */

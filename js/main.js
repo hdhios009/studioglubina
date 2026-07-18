@@ -223,7 +223,7 @@
         submitting = false;
       }).catch(function () {
         if (btn) { btn.disabled = false; btn.textContent = btnDefaultText; }
-        setFieldError('contact', 'Не удалось отправить. Попробуйте ещё раз или напишите в Telegram @hdhios007');
+        setFieldError('contact', 'Не удалось отправить. Попробуйте ещё раз или напишите в Telegram @studioglubina');
         submitting = false;
       });
     });
@@ -249,16 +249,12 @@
     }
     if (thanksClose) thanksClose.addEventListener('click', closeThanks);
     thanksOverlay.addEventListener('click', function (e) { if (e.target === thanksOverlay) closeThanks(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeThanks(); });
     window.__openThanksModal = openThanks;
+    window.__closeThanksModal = closeThanks;
   }
 
-  // ---------- tariff cards: toggle deatils, business chat links, analytics ----------
-  var TELEGRAM_TARIFF_LINKS = {
-    start: "https://t.me/studioglubinabot?start=tariff_start",
-    business: "https://t.me/studioglubinabot?start=tariff_business",
-    special: "https://t.me/studioglubinabot?start=tariff_special"
-  };
+  // ---------- tariff cards: toggle details, Telegram links, analytics ----------
+  var TELEGRAM_CONTACT = 'https://t.me/studioglubina';
 
   var TARIFF_META = {
     start:   { name: "Старт",       launch: 15000,  monthly: 2490 },
@@ -289,33 +285,18 @@
     } catch (e) {}
   }
 
-  // Telegram bot fallback link
-  var BOT_TARIFF_LINKS = {
-    start:    'https://t.me/studioglubinabot?start=tariff_start',
-    business: 'https://t.me/studioglubinabot?start=tariff_business',
-    special:  'https://t.me/studioglubinabot?start=tariff_special'
-  };
-
   function openTariffChat(tariffKey) {
-    var goalName = 'tariff_' + tariffKey + '_click';
-    sendYametrikaGoal(goalName);
+    sendYametrikaGoal('tariff_' + tariffKey + '_click');
     logTariffAnalytics(tariffKey);
-
-    var bizLink = TELEGRAM_TARIFF_LINKS[tariffKey];
-    if (bizLink && bizLink.startsWith('http')) {
-      window.open(bizLink, '_blank', 'noopener,noreferrer');
-    } else {
-      // fallback to bot
-      window.open(BOT_TARIFF_LINKS[tariffKey] || BOT_TARIFF_LINKS.start, '_blank', 'noopener,noreferrer');
-    }
+    window.open(TELEGRAM_CONTACT, '_blank', 'noopener,noreferrer');
   }
 
   [].slice.call(document.querySelectorAll('[data-tariff-action]')).forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
+    btn.addEventListener('click', function () {
       var action = btn.getAttribute('data-tariff-action');
-      if (action === 'bot_selection') {
-        sendYametrikaGoal('tariff_bot_selection_click');
-        window.open('https://t.me/studioglubinabot?start=tariff_selection', '_blank', 'noopener,noreferrer');
+      if (action === 'bot_selection' || action === 'telegram_selection') {
+        sendYametrikaGoal('tariff_telegram_selection_click');
+        window.open(TELEGRAM_CONTACT, '_blank', 'noopener,noreferrer');
         return;
       }
       openTariffChat(action);
@@ -517,11 +498,42 @@
   var burger = document.getElementById('burger');
   var mm = document.getElementById('mobileMenu');
   var mmClose = document.getElementById('mmClose');
+  var openMM = function () {};
+  var closeMM = function () {};
+  var isMMOpen = function () { return !!(mm && mm.classList.contains('open')); };
   if (burger && mm) {
-    var openMM = function () { mm.classList.add('open'); document.body.style.overflow = 'hidden'; };
-    var closeMM = function () { mm.classList.remove('open'); document.body.style.overflow = ''; };
-    burger.addEventListener('click', openMM);
+    openMM = function () {
+      mm.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      burger.setAttribute('aria-expanded', 'true');
+    };
+    closeMM = function () {
+      mm.classList.remove('open');
+      document.body.style.overflow = '';
+      burger.setAttribute('aria-expanded', 'false');
+    };
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-controls', 'mobileMenu');
+    burger.addEventListener('click', function () {
+      if (isMMOpen()) closeMM();
+      else openMM();
+    });
     if (mmClose) mmClose.addEventListener('click', closeMM);
     mm.querySelectorAll('a').forEach(function (el) { el.addEventListener('click', closeMM); });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 800 && isMMOpen()) closeMM();
+    });
   }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (isMMOpen()) {
+      closeMM();
+      return;
+    }
+    if (typeof window.__closeThanksModal === 'function' &&
+        thanksOverlay && thanksOverlay.classList.contains('show')) {
+      window.__closeThanksModal();
+    }
+  });
 })();
