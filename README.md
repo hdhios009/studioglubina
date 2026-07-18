@@ -1,46 +1,48 @@
-# Studio Glubina — сайт
+# Studio Glubina
 
-Статический сайт: чистые HTML, CSS и JavaScript, без сборки и зависимостей.
+Сайт веб-студии [Studio Glubina](https://studioglubina.ru) — статический HTML + CSS + JavaScript без сборки. Публикуется через GitHub Pages из корня репозитория.
+
+## Технологии
+
+- HTML5, CSS3, Vanilla JavaScript
+- GitHub Pages
+- Домен: `studioglubina.ru`
 
 ## Структура
 
 ```
-index.html                   главная страница
-privacy.html                 политика конфиденциальности
-kotiksym-demo.html           демо кейса (встраивается в iframe на главной)
-kotiksym-demo-standalone.html демо кейса как отдельная страница
-css/style.css                все стили
-js/main.js                   вся логика и анимации
-images/                      логотип и фоновые изображения
-favicon.png, apple-touch-icon.png  иконки сайта
-robots.txt, sitemap.xml      SEO-файлы
+index.html                   главная
+works.html                   работы (кейс КотиксУМ)
+404.html                     страница ошибки для GitHub Pages
+privacy.html                 политика (для посадочных с формой/Метрикой)
+css/style.css                стили основного сайта
+css/legacy.css               стили старых посадочных услуг
+js/main.js                   логика основного сайта
+js/legacy.js                 логика посадочных услуг
+assets/                      логотип и favicon
+images/                      вспомогательные файлы для демо
+sozdanie-saitov/             SEO-посадочная
+landing-page/                SEO-посадочная
+korporativnyy-sayt/          SEO-посадочная
+redizayn-sayta/              SEO-посадочная
+podderzhka-sayta/            SEO-посадочная
+CNAME                        studioglubina.ru
+robots.txt, sitemap.xml
+yandex_63e83da62e2cfd7f.html подтверждение Яндекс.Вебмастера
+site.webmanifest
 ```
 
-## Запуск локально
-
-Сайт не требует сборки. Достаточно открыть `index.html` в браузере, либо поднять
-локальный сервер (рекомендуется, чтобы `fetch`/относительные пути работали как в проде):
+## Локальный запуск
 
 ```bash
-# любой из вариантов
-npx serve .
-# или
 python3 -m http.server 8080
 ```
 
-Затем открыть `http://localhost:8080`.
+Откройте `http://localhost:8080`.
 
-## Деплой на GitHub Pages / любой статический хостинг
+## Контакты
 
-Файлы уже используют относительные пути — просто загрузите содержимое этой папки
-в репозиторий и включите статический хостинг (GitHub Pages, Netlify, Vercel и т.д.)
-без дополнительной конфигурации сборки.
+- Telegram: [@studioglubina](https://t.me/studioglubina)
+- Почта: studio.glubina@gmail.com
 
-Перед публикацией на своём домене обновите `robots.txt`, `sitemap.xml` и
-мета-теги `og:url` / `canonical` в `<head>` `index.html`, если домен отличается
-от `studioglubina.ru`.
-
-## Форма обратной связи
-
-Форма на странице использует [Formspree](https://formspree.io/) (`action` в `<form>`
-в `index.html`). При смене адреса формы или почты — поменяйте `action` там же.
+На главной и странице работ нет формы заявок: связь через Telegram и почту.

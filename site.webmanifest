@@ -1,0 +1,21 @@
+{
+  "name": "Studio Glubina",
+  "short_name": "Glubina",
+  "description": "Дизайн и разработка сайтов для бизнеса",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#176BFF",
+  "icons": [
+    {
+      "src": "assets/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
