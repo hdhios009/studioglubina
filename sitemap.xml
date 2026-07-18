@@ -6,28 +6,33 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://studioglubina.ru/sozdanie-saitov/</loc>
+    <loc>https://studioglubina.ru/works.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://studioglubina.ru/sozdanie-saitov/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://studioglubina.ru/landing-page/</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://studioglubina.ru/korporativnyy-sayt/</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://studioglubina.ru/redizayn-sayta/</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://studioglubina.ru/podderzhka-sayta/</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
 </urlset>
