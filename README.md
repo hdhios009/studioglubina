@@ -1,23 +1,35 @@
-# Studio Glubina
+# Studio Glubina — сайт
 
-Сайт из архива `Studio Glubina portfolio redesign (17)` — статический HTML + CSS + JS.
+Обычный статический сайт: HTML + CSS + JS, без сборщиков и фреймворков.
 
-Публикация: GitHub Pages из корня ветки `main`, домен `studioglubina.ru`.
+## Структура
 
-## Основные страницы
-
-- `index.html` — главная
-- `works.html` — работы
-- `404.html` — страница ошибки
-
-## Системные файлы (не из ZIP)
-
-- `CNAME` — studioglubina.ru
-- `robots.txt`, `sitemap.xml`
-- `yandex_63e83da62e2cfd7f.html` — Яндекс.Вебмастер
-
-## Локально
-
-```bash
-python3 -m http.server 8080
 ```
+studio-glubina-site/
+├── index.html      — главная страница
+├── works.html      — страница работ (кейс КотиксУМ)
+├── 404.html         — страница ошибки 404 (для GitHub Pages и др. хостингов)
+├── css/style.css
+├── js/main.js
+└── README.md
+```
+
+## Что где менять
+
+- **Логотип** — `assets/logo.png` (иконка в шапке и meta-иконки). Favicon-набор и `site.webmanifest` собраны из него.
+- **Контакты** — Telegram `@studioglubina` (`https://t.me/studioglubina`) и почта `studio.glubina@gmail.com` — заданы во всех CTA-кнопках, футере и странице контактов на `index.html`, `works.html`, `404.html`.
+- **Работы** — `works.html`, блок `.work-project` (сейчас один кейс — КотиксУМ).
+- **Цены и состав услуг** — блок `#services` в `index.html`.
+- **Текст и вопросы FAQ** — блок `#faqList` в `index.html`.
+
+Форма заявки удалена — вся связь идёт напрямую через Telegram и почту. Сайт не собирает персональные данные и не использует аналитику, поэтому политики конфиденциальности и cookie-уведомления нет.
+
+## Публикация на GitHub Pages
+
+1. Загрузите содержимое `studio-glubina-site/` в репозиторий на GitHub.
+2. `Settings → Pages → Deploy from a branch`, ветка `main`, папка `/ (root)`.
+3. Файл `404.html` в корне репозитория GitHub Pages подхватывает автоматически при обращении к несуществующему адресу.
+
+## Технически
+
+Ванильный JS без зависимостей: мобильное меню, аккордеон FAQ и карточки услуг (hover на десктопе / tap на телефоне), модальное окно политики конфиденциальности, плавное появление hero и секций при скролле. Все стили — в `css/style.css`, вся логика — в `js/main.js`.
