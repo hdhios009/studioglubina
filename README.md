@@ -8,7 +8,6 @@
 studio-glubina-site/
 ├── index.html      — главная страница
 ├── works/          — страница работ (кейс КотиксУМ)
-├── privacy/        — политика конфиденциальности
 ├── 404.html         — страница ошибки 404 (для GitHub Pages и др. хостингов)
 ├── css/style.css
 ├── js/main.js
