@@ -36,7 +36,11 @@ button{font-family:inherit;cursor:pointer}
 .nav a:hover{color:var(--text)}
 .header .nav-desktop{display:none}
 .header .burger{display:inline-flex}
-@media(min-width:900px){.header a.nav-desktop{display:inline-flex}}
+@media(min-width:900px){
+  .header nav.nav-desktop{display:flex}
+  .header a.nav-desktop{display:inline-flex}
+  .header .burger{display:none}
+}
 
 .burger{width:44px;height:44px;border-radius:8px;background:transparent;border:1px solid var(--line);align-items:center;justify-content:center;position:relative}
 .burger span{position:absolute;left:13px;right:13px;height:2px;background:var(--text)}
