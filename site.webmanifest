@@ -1,7 +1,7 @@
 {
   "name": "Studio Glubina",
   "short_name": "Glubina",
-  "description": "Дизайн и разработка сайтов для бизнеса",
+  "description": "Studio Glubina — студия дизайна и разработки сайтов для бизнеса.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",
