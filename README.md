@@ -7,7 +7,8 @@
 ```
 studio-glubina-site/
 ├── index.html      — главная страница
-├── works.html      — страница работ (кейс КотиксУМ)
+├── works/          — страница работ (кейс КотиксУМ)
+├── privacy/        — политика конфиденциальности
 ├── 404.html         — страница ошибки 404 (для GitHub Pages и др. хостингов)
 ├── css/style.css
 ├── js/main.js
@@ -17,8 +18,8 @@ studio-glubina-site/
 ## Что где менять
 
 - **Логотип** — `assets/logo.png` (иконка в шапке и meta-иконки). Favicon-набор и `site.webmanifest` собраны из него.
-- **Контакты** — Telegram `@studioglubina` (`https://t.me/studioglubina`) и почта `studio.glubina@gmail.com` — заданы во всех CTA-кнопках, футере и странице контактов на `index.html`, `works.html`, `404.html`.
-- **Работы** — `works.html`, блок `.work-project` (сейчас один кейс — КотиксУМ).
+- **Контакты** — Telegram `@studioglubina` (`https://t.me/studioglubina`) и почта `studio.glubina@gmail.com` — заданы во всех CTA-кнопках, футере и странице контактов на `index.html`, `works/`, `404.html`.
+- **Работы** — `works/`, блок `.work-project` (сейчас один кейс — КотиксУМ).
 - **Цены и состав услуг** — блок `#services` в `index.html`.
 - **Текст и вопросы FAQ** — блок `#faqList` в `index.html`.
 
