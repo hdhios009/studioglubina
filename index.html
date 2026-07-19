@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<script>if(/\/index\.html$/i.test(location.pathname))location.replace(location.pathname.replace(/index\.html$/i,"")+location.search+location.hash);</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Studio Glubina — дизайн и разработка сайтов для бизнеса</title>
@@ -34,12 +36,12 @@
 
 <header id="header" class="header">
   <div class="header-inner container">
-    <a href="index.html" class="logo">
+    <a href="/" class="logo">
       <img class="logo-img" src="assets/logo.png" alt="Studio Glubina" width="1024" height="1024">
       <span class="logo-text"><span class="logo-main">STUDIO GLUBINA</span><span class="logo-sub">DIGITAL DESIGN STUDIO</span></span>
     </a>
     <nav class="nav nav-desktop">
-      <a href="works/">Работы</a>
+      <a href="/works/">Работы</a>
       <a href="#services">Услуги</a>
       <a href="#process">Процесс</a>
       <a href="#contacts">Контакты</a>
@@ -57,7 +59,7 @@
     <button class="mobile-close" id="mobileCloseBtn" type="button" aria-label="Закрыть меню">✕</button>
   </div>
   <nav class="mobile-nav">
-    <a href="works/" class="mobile-nav-link">Работы</a>
+    <a href="/works/" class="mobile-nav-link">Работы</a>
     <a href="#services" class="mobile-nav-link">Услуги</a>
     <a href="#process" class="mobile-nav-link">Процесс</a>
     <a href="#contacts" class="mobile-nav-link">Контакты</a>
@@ -76,7 +78,7 @@
       <p class="hero-desc hero-fade" data-delay="360">Продумываем структуру, создаём дизайн и запускаем сайт, который понятно объясняет ваше предложение и приводит человека к заявке.</p>
       <div class="hero-actions hero-fade" data-delay="440">
         <a class="btn btn-primary" href="https://t.me/studioglubina" target="_blank" rel="noopener noreferrer">Написать в Telegram ↗</a>
-        <a class="btn btn-secondary" href="works/">Смотреть работы</a>
+        <a class="btn btn-secondary" href="/works/">Смотреть работы</a>
       </div>
     </div>
   </div>
@@ -252,8 +254,8 @@
     <div class="footer-cols">
       <div>
         <div class="footer-heading">НАВИГАЦИЯ</div>
-        <a href="index.html">Главная</a>
-        <a href="works/">Работы</a>
+        <a href="/">Главная</a>
+        <a href="/works/">Работы</a>
         <a href="#services">Услуги</a>
         <a href="#process">Процесс</a>
         <a href="#contacts">Контакты</a>
