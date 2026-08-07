@@ -1,35 +1,11 @@
-# Studio Glubina — сайт
+# Studio Glubina
 
-Обычный статический сайт: HTML + CSS + JS, без сборщиков и фреймворков.
+Production static site for https://studioglubina.ru (GitHub Pages).
 
-## Структура
+## Publish
+1. Deploy branch `main`, folder `/ (root)`.
+2. Custom domain: `studioglubina.ru` (`CNAME` + `.nojekyll` included).
 
-```
-studio-glubina-site/
-├── index.html      — главная страница
-├── works/          — страница работ (кейс КотиксУМ)
-├── 404.html         — страница ошибки 404 (для GitHub Pages и др. хостингов)
-├── css/style.css
-├── js/main.js
-└── README.md
-```
-
-## Что где менять
-
-- **Логотип** — `assets/logo.png` (иконка в шапке и meta-иконки). Favicon-набор и `site.webmanifest` собраны из него.
-- **Контакты** — Telegram `@studioglubina` (`https://t.me/studioglubina`) и почта `studio.glubina@gmail.com` — заданы во всех CTA-кнопках, футере и странице контактов на `index.html`, `works/`, `404.html`.
-- **Работы** — `works/`, блок `.work-project` (сейчас один кейс — КотиксУМ).
-- **Цены и состав услуг** — блок `#services` в `index.html`.
-- **Текст и вопросы FAQ** — блок `#faqList` в `index.html`.
-
-Форма заявки удалена — вся связь идёт напрямую через Telegram и почту. Сайт не собирает персональные данные и не использует аналитику, поэтому политики конфиденциальности и cookie-уведомления нет.
-
-## Публикация на GitHub Pages
-
-1. Загрузите содержимое `studio-glubina-site/` в репозиторий на GitHub.
-2. `Settings → Pages → Deploy from a branch`, ветка `main`, папка `/ (root)`.
-3. Файл `404.html` в корне репозитория GitHub Pages подхватывает автоматически при обращении к несуществующему адресу.
-
-## Технически
-
-Ванильный JS без зависимостей: мобильное меню, аккордеон FAQ и карточки услуг (hover на десктопе / tap на телефоне), модальное окно политики конфиденциальности, плавное появление hero и секций при скролле. Все стили — в `css/style.css`, вся логика — в `js/main.js`.
+## Contacts
+- Email: studio.glubina@gmail.com
+- Telegram: https://t.me/studioglubina
