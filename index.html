@@ -1,283 +1,610 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<script>if(/\/index\.html$/i.test(location.pathname))location.replace(location.pathname.replace(/index\.html$/i,"")+location.search+location.hash);</script>
-
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Studio Glubina — дизайн и разработка сайтов для бизнеса</title>
-<meta name="description" content="Studio Glubina — студия дизайна и разработки сайтов для бизнеса.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f4f1ea">
+<title>Studio Glubina — сайты для бизнеса</title>
+<meta name="description" content="Studio Glubina проектирует и создаёт сайты для бизнеса: структура, дизайн и разработка. Лендинги, многостраничные сайты и редизайн.">
 <link rel="canonical" href="https://studioglubina.ru/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Studio Glubina">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:title" content="Studio Glubina — дизайн и разработка сайтов для бизнеса">
-<meta property="og:description" content="Studio Glubina — студия дизайна и разработки сайтов для бизнеса.">
+<meta property="og:title" content="Studio Glubina — сайты для бизнеса">
+<meta property="og:description" content="Studio Glubina проектирует и создаёт сайты для бизнеса: структура, дизайн и разработка. Лендинги, многостраничные сайты и редизайн.">
 <meta property="og:url" content="https://studioglubina.ru/">
 <meta property="og:image" content="https://studioglubina.ru/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Studio Glubina — дизайн и разработка сайтов для бизнеса">
-<meta name="twitter:description" content="Studio Glubina — студия дизайна и разработки сайтов для бизнеса.">
+<meta name="twitter:title" content="Studio Glubina — сайты для бизнеса">
+<meta name="twitter:description" content="Studio Glubina проектирует и создаёт сайты для бизнеса: структура, дизайн и разработка. Лендинги, многостраничные сайты и редизайн.">
 <meta name="twitter:image" content="https://studioglubina.ru/assets/og-image.png">
-<meta name="theme-color" content="#176BFF">
 <link rel="icon" href="https://studioglubina.ru/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="https://studioglubina.ru/favicon.png" type="image/png" sizes="120x120">
-<link rel="icon" href="https://studioglubina.ru/favicon.ico" sizes="any" type="image/x-icon">
+<link rel="icon" href="https://studioglubina.ru/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="https://studioglubina.ru/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" sizes="180x180" href="https://studioglubina.ru/assets/apple-touch-icon.png">
-<link rel="manifest" href="https://studioglubina.ru/site.webmanifest">
-<meta name="msapplication-TileColor" content="#176BFF">
-<meta name="msapplication-config" content="https://studioglubina.ru/browserconfig.xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<style>
+:root{
+ --bg:#f4f1ea;--ink:#11110f;--muted:#77736c;--line:rgba(17,17,15,.14);
+ --accent:#ff5d37;--dark:#10100f;--soft:#e9e5dc;--r:28px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+body.lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{width:min(1440px,calc(100% - 52px));margin:auto}
+.reveal{opacity:0;transform:translateY(34px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* loader */
+.loader{position:fixed;inset:0;background:var(--dark);color:white;z-index:200;display:grid;place-items:center;transition:transform .9s cubic-bezier(.76,0,.24,1)}
+.loader.hide{transform:translateY(-102%)}
+.loader-box{width:min(820px,80vw)}
+.loader-title{font-weight:820;font-size:clamp(50px,7vw,110px);line-height:.82;letter-spacing:-.075em}
+.loader-meta{margin-top:26px;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#999}
+.loadline{height:1px;background:#30302e;margin-top:20px;overflow:hidden}
+.loadline i{display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left;animation:load 1.15s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes load{to{transform:scaleX(1)}}
+
+/* nav/progress */
+.progress{position:fixed;left:0;top:0;width:100%;height:2px;z-index:100;pointer-events:none}
+.progress i{display:block;width:100%;height:100%;background:var(--accent);transform-origin:left;transform:scaleX(0)}
+nav{position:fixed;z-index:90;left:0;right:0;top:0;background:rgba(244,241,234,.78);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:.25s}
+nav.scrolled{border-color:var(--line)}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:850;letter-spacing:-.048em;font-size:20px}
+.links{display:flex;gap:26px;font-size:13px}
+.links a{position:relative}
+.links a:after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:.25s}
+.links a:hover:after{transform:scaleX(1);transform-origin:left}
+.navcta{border:1px solid var(--ink);border-radius:999px;padding:11px 17px;transition:.22s}
+.navcta:hover{background:var(--ink);color:white}
+
+/* hero */
+.hero{min-height:100svh;padding:142px 0 54px;display:flex;align-items:flex-end;position:relative}
+.hero .wrap{position:relative;z-index:2}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.eyebrow:before{content:"";width:34px;height:1px;background:var(--ink)}
+h1{font-size:clamp(64px,9vw,154px);line-height:.86;letter-spacing:-.078em;margin:0;max-width:1300px;font-weight:770}
+.line{display:block;overflow:hidden}.line span{display:block;transform:translateY(110%);animation:heroIn .92s cubic-bezier(.16,1,.3,1) forwards}
+.line:nth-child(2) span{animation-delay:.08s}.line:nth-child(3) span{animation-delay:.16s}
+@keyframes heroIn{to{transform:none}}
+.accentline{position:relative;display:inline-block}
+.accentline:after{content:"";position:absolute;left:0;right:0;bottom:.01em;height:.075em;background:var(--accent);transform:scaleX(0);transform-origin:left;animation:under 1s cubic-bezier(.2,.75,.2,1) 1.1s forwards}
+@keyframes under{to{transform:scaleX(1)}}
+.hero-bottom{margin-top:42px;display:grid;grid-template-columns:1fr auto;gap:38px;align-items:end}
+.hero-copy{font-size:clamp(18px,1.65vw,27px);line-height:1.38;max-width:800px}
+.hero-meta{font-size:13px;line-height:1.65;color:var(--muted)}
+.hero-action{justify-self:end}
+.roundcta{width:116px;height:116px;border-radius:50%;background:var(--ink);color:white;display:grid;place-items:center;text-align:center;font-size:12px;line-height:1.2;transition:.3s;position:relative}
+.roundcta:after{content:"↗";position:absolute;right:21px;top:18px;font-size:18px}
+.roundcta:hover{transform:scale(1.08);background:var(--accent);color:#111}
+.hero-orbit{position:absolute;width:340px;height:340px;border:1px solid var(--line);border-radius:50%;right:-110px;top:110px;animation:spin 22s linear infinite}
+.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;background:var(--ink);left:50%;top:50%;transform:translate(-50%,-50%)}
+.hero-orbit:before{height:68%;width:1px}.hero-orbit:after{width:68%;height:1px}
+.hero-orbit i{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--accent);left:50%;top:-9px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.striptrack{width:max-content;display:flex;gap:34px;padding:15px 0;animation:marq 24s linear infinite;font-size:11px;letter-spacing:.13em;text-transform:uppercase}
+.striptrack span{display:flex;gap:34px;align-items:center}.striptrack b{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* heads */
+section{padding:130px 0}
+.head{display:block;margin-bottom:64px}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted)}
+.head h2{font-size:clamp(44px,5.4vw,88px);line-height:.95;letter-spacing:-.06em;margin:0;max-width:1060px}
+
+/* work */
+.worklist{display:grid;gap:100px}
+.work{display:grid;grid-template-columns:.28fr 1fr;gap:30px}
+.workmeta{position:sticky;top:104px;align-self:start;padding-top:10px}
+.workmeta small{font-size:11px;letter-spacing:.13em;color:var(--muted)}
+.workmeta h3{font-size:38px;letter-spacing:-.05em;margin:20px 0 10px}
+.workmeta p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+.casefacts{margin-top:26px;border-top:1px solid var(--line)}
+.casefacts div{display:flex;justify-content:space-between;gap:18px;padding:11px 0;border-bottom:1px solid var(--line);font-size:11px}
+.casefacts span:last-child{color:var(--muted)}
+.case-link{display:inline-block;margin-top:22px;font-size:13px;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.frame{height:650px;border-radius:30px;position:relative;overflow:hidden;transform-style:preserve-3d}
+.frame.blue{background:#cbdff7}.frame.black{background:#171715}.frame.orange{background:#ff6a43}
+.badge{position:absolute;left:22px;top:20px;z-index:5;background:rgba(255,255,255,.75);backdrop-filter:blur(10px);padding:8px 11px;border-radius:999px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.browser{position:absolute;inset:56px;border-radius:19px;background:#f7f5ef;box-shadow:0 30px 90px rgba(0,0,0,.18);overflow:hidden;transition:transform .22s ease}
+.bar{height:42px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:7px;padding:0 14px}.d{width:7px;height:7px;border-radius:50%;background:#bbb}
+.mock{padding:50px}.mock h4{font-size:clamp(42px,4.7vw,72px);line-height:.93;letter-spacing:-.065em;margin:0 0 18px;max-width:760px}.mock p{color:#686762;max-width:520px;line-height:1.5}.rule{height:1px;background:#ddd;margin:34px 0}.tiles{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:12px}.tile{height:150px;border-radius:14px;background:#ebe8e0}
+.frame.blue .tile{background:#d8e7f7}.frame.orange .tile{background:#f0e3d7}
+
+
+
+
+
+/* проекты — крупно, без псевдо-окон */
+.portfolio-intro{
+  display:block;
+  border-top:1px solid var(--line);padding-top:22px;margin-bottom:80px
+}
+.portfolio-intro p{margin:0;max-width:600px;color:var(--muted);line-height:1.6;font-size:16px}
+.portfolio-count{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+
+.cases{display:grid;gap:150px}
+.case{position:relative;border-top:1px solid var(--line);padding-top:26px}
+.case-heading{display:grid;grid-template-columns:1fr;gap:32px;align-items:end;margin-bottom:34px}
+.case-kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.case-title{
+  margin:0;font-size:clamp(72px,10vw,158px);line-height:.82;letter-spacing:-.082em;font-weight:780
+}
+.case-meta{
+  margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:30px;
+  padding-top:22px;border-top:1px solid var(--line)
+}
+.case-meta strong{font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+.case-meta p{margin:9px 0 0;color:var(--muted);line-height:1.55;max-width:570px}
+
+.project-portal{
+  position:relative;min-height:720px;border-radius:34px;overflow:hidden;
+  padding:48px;display:flex;flex-direction:column;justify-content:space-between;
+  isolation:isolate
+}
+.project-portal.education{background:#c6daf2;color:#111}
+.project-portal.meridian{background:#121211;color:#f6f2ea}
+.project-portal:before{
+  content:"";position:absolute;width:620px;height:620px;border-radius:50%;
+  border:1px solid currentColor;opacity:.11;right:-160px;top:-220px;z-index:-1
+}
+.project-portal:after{
+  content:"";position:absolute;width:290px;height:290px;border-radius:50%;
+  border:1px solid currentColor;opacity:.11;right:130px;top:60px;z-index:-1
+}
+.portal-top{
+  display:flex;justify-content:space-between;gap:20px;align-items:flex-start
+}
+.portal-label{
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  border:1px solid currentColor;border-radius:999px;padding:9px 12px;opacity:.68
+}
+.portal-index{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.55}
+.portal-main{max-width:1050px;margin-top:34px}
+.portal-main h4{
+  font-size:clamp(62px,8vw,126px);line-height:.86;letter-spacing:-.075em;
+  margin:0 0 24px
+}
+.portal-main p{
+  max-width:720px;font-size:clamp(18px,1.7vw,27px);line-height:1.42;margin:0;opacity:.68
+}
+.portal-actions{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:44px
+}
+.portal-note{
+  max-width:520px;font-size:13px;line-height:1.55;opacity:.55
+}
+.portal-button{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:290px;min-height:78px;padding:0 28px;border-radius:999px;
+  background:#111;color:white;font-size:18px;font-weight:740;letter-spacing:-.02em;
+  transition:transform .22s ease,background .22s ease,color .22s ease
+}
+.meridian .portal-button{background:#f4f0e8;color:#111}
+.portal-button:hover{transform:translateY(-4px) scale(1.015);background:var(--accent);color:#111}
+
+.portal-word{
+  position:absolute;left:-18px;bottom:-48px;
+  font-size:clamp(160px,21vw,340px);font-weight:900;letter-spacing:-.11em;
+  line-height:.72;opacity:.075;white-space:nowrap;pointer-events:none;z-index:-1
+}
+.case-caption{margin-top:22px;display:grid;grid-template-columns:1fr;gap:32px}
+.case-caption .side{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.case-caption-main{display:grid;grid-template-columns:1.2fr .8fr;gap:30px}
+.case-caption h4{font-size:clamp(36px,4.2vw,66px);line-height:.96;letter-spacing:-.055em;margin:0}
+.case-caption p{margin:0;color:var(--muted);line-height:1.58;max-width:520px}
+
+.detail-grid{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.detail{
+  min-height:300px;border:1px solid var(--line);border-radius:24px;padding:26px;
+  display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative
+}
+.detail.dark{background:var(--dark);color:white;border-color:transparent}
+.detail.accent{background:var(--accent);border-color:transparent}
+.detail small{font-size:10px;letter-spacing:.13em;text-transform:uppercase;opacity:.6}
+.detail h5{font-size:30px;letter-spacing:-.045em;line-height:1;margin:0}
+.detail p{font-size:14px;line-height:1.5;color:var(--muted);margin:13px 0 0}
+.detail.dark p{color:#aaa7a0}.detail.accent p{color:#4c3028}
+.detail-orbit{
+  position:absolute;width:180px;height:180px;border:1px solid currentColor;border-radius:50%;
+  opacity:.12;right:-80px;top:-65px
+}
+.detail-orbit:after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:currentColor;left:50%;top:-6px}
+.case-footer{
+  display:flex;justify-content:flex-end;gap:30px;align-items:center;
+  margin-top:26px;padding-top:20px;border-top:1px solid var(--line)
+}
+.case-services{display:flex;gap:8px;flex-wrap:wrap}
+.case-services span{
+  padding:7px 10px;border:1px solid var(--line);border-radius:999px;
+  font-size:10px;text-transform:uppercase;letter-spacing:.08em
+}
+
+@media(max-width:900px){
+  .portfolio-intro,.case-heading,.case-meta,.case-caption,.case-caption-main{grid-template-columns:1fr}
+  .cases{gap:105px}
+  .project-portal{min-height:600px;padding:28px 22px}
+  .portal-top{flex-direction:column}
+  .portal-main h4{font-size:58px}
+  .portal-main p{font-size:18px}
+  .portal-actions{align-items:flex-start;flex-direction:column}
+  .portal-button{width:100%;min-width:0;min-height:68px}
+  .portal-word{font-size:180px;bottom:-10px}
+  .detail-grid{grid-template-columns:1fr}.detail{min-height:260px}
+}
+/* proof statement */
+.statement{background:var(--dark);color:#fff;padding:150px 0;position:relative;overflow:hidden}
+.statement p{font-size:clamp(50px,6.5vw,106px);line-height:.93;letter-spacing:-.068em;margin:0;max-width:1320px}
+.statement .dim{color:#55534e}
+.statement-note{margin-top:48px;margin-left:34%;max-width:550px;font-size:18px;line-height:1.55;color:#aaa8a2}
+.bigG{position:absolute;right:-20px;bottom:-80px;font-size:300px;font-weight:900;letter-spacing:-.12em;color:rgba(255,255,255,.025)}
+
+/* contrast band */
+.compare{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:30px;overflow:hidden}
+.compare>div{padding:44px;min-height:420px;display:flex;flex-direction:column;justify-content:space-between}
+.compare .left{background:#e9e5dc}.compare .right{background:var(--accent)}
+.compare small{font-size:11px;letter-spacing:.13em;text-transform:uppercase;opacity:.6}
+.compare h3{font-size:clamp(42px,4vw,68px);line-height:.95;letter-spacing:-.055em;margin:0;max-width:580px}
+.compare p{line-height:1.55;max-width:520px;color:#4f4d48}
+
+/* services/pricing */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border:1px solid var(--line);border-radius:28px;padding:28px;min-height:380px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:.3s}
+.card:hover{transform:translateY(-7px)}
+.card .n{font-size:11px;color:var(--muted);letter-spacing:.12em}
+.card h3{font-size:36px;letter-spacing:-.045em;margin:0 0 10px}
+.card p{color:var(--muted);line-height:1.55;margin:0}
+.price{font-size:22px;font-weight:700;margin-top:24px}
+.card:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:var(--accent);right:-170px;bottom:-170px;transition:.45s cubic-bezier(.2,.75,.2,1);z-index:-1}
+.card:hover:after{right:-100px;bottom:-100px}
+
+/* process */
+.process{border-top:1px solid var(--line)}
+.step{display:grid;grid-template-columns:.42fr .58fr;gap:30px;padding:30px 0;border-bottom:1px solid var(--line);transition:.25s}
+.step:hover{padding-left:12px}
+.step small{color:var(--muted);font-size:11px;letter-spacing:.12em}.step h3{font-size:32px;letter-spacing:-.04em;margin:0}.step p{color:var(--muted);line-height:1.55;margin:0}
+
+/* faq */
+.faq{border-top:1px solid var(--line)}
+.q{border-bottom:1px solid var(--line)}
+.q button{width:100%;border:0;background:none;padding:24px 0;display:flex;justify-content:space-between;align-items:center;text-align:left;font-size:23px;letter-spacing:-.025em;cursor:pointer;color:var(--ink)}
+.q button span:last-child{font-size:26px;transition:.25s}
+.q.open button span:last-child{transform:rotate(45deg)}
+.answer{max-height:0;overflow:hidden;transition:max-height .35s ease}.answer p{max-width:760px;color:var(--muted);line-height:1.6;margin:0;padding:0 0 26px}
+
+/* CTA */
+.cta{padding:155px 0 118px}.ctabox{background:var(--dark);color:#fff;border-radius:34px;min-height:650px;padding:72px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.ctabox h2{font-size:clamp(64px,8.3vw,130px);line-height:.86;letter-spacing:-.078em;margin:0;max-width:1120px}
+.ctabottom{display:flex;justify-content:space-between;align-items:end;gap:40px}.ctabottom p{font-size:18px;line-height:1.55;color:#aaa8a2;max-width:540px;margin:0}
+.pill{display:flex;align-items:center;justify-content:center;width:205px;height:64px;border-radius:999px;background:#fff;color:#111;font-weight:720;transition:transform .16s}
+.ring{position:absolute;width:560px;height:560px;border-radius:50%;border:1px solid rgba(255,255,255,.12);right:-130px;top:-190px;animation:spin 24s linear infinite}.ring:after{content:"";position:absolute;width:20px;height:20px;border-radius:50%;background:var(--accent);left:50%;top:-10px}
+
+
+.contact-direct{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;font-size:13px;color:#aaa8a2}
+.contact-direct a{border-bottom:1px solid rgba(255,255,255,.28);padding-bottom:3px}
+.contact-direct a:hover{color:white;border-color:white}
+
+.contact-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.pill-telegram{background:var(--accent)!important;color:#111!important}
+@media(max-width:900px){.contact-buttons{width:100%}.contact-buttons .pill{width:100%}}
+
+footer{border-top:1px solid var(--line);padding:28px 0 48px;font-size:12px;color:var(--muted)}.foot{display:flex;justify-content:space-between;gap:20px}
+
+/* cursor */
+.cursor{position:fixed;z-index:120;width:14px;height:14px;border-radius:50%;background:var(--accent);pointer-events:none;mix-blend-mode:multiply;transform:translate(-50%,-50%);display:none;transition:width .18s,height .18s,opacity .18s}
+.cursor.big{width:64px;height:64px;opacity:.7}.clabel{position:fixed;z-index:121;pointer-events:none;background:#111;color:#fff;padding:8px 11px;border-radius:999px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;transform:translate(18px,18px);opacity:0;transition:.18s}.clabel.show{opacity:1}
+@media(pointer:fine){.cursor{display:block}}
+
+@media(max-width:900px){
+ .wrap{width:min(100% - 28px,1440px)}.links{display:none}.hero{min-height:auto;padding-top:118px}
+ .hero-bottom,.head,.work,.compare,.step{grid-template-columns:1fr}.hero-action{justify-self:start}.roundcta{width:100px;height:100px}
+ .hero-orbit{width:180px;height:180px;right:-100px;top:100px}section{padding:90px 0}
+ .workmeta{position:static}.frame{height:410px}.browser{inset:24px}.mock{padding:28px}.tiles{grid-template-columns:1fr 1fr}.tiles .tile:last-child{display:none}
+ .statement{padding:100px 0}.statement-note{margin-left:0}.cards{grid-template-columns:1fr}.step{gap:14px}
+ .ctabox{min-height:590px;padding:42px 24px}.ctabottom{flex-direction:column;align-items:flex-start}.foot{flex-direction:column}
+}
+
+a:focus-visible,button:focus-visible,.navcta:focus-visible,.pill:focus-visible,.portal-button:focus-visible,.case-live:focus-visible,.roundcta:focus-visible{
+  outline:2px solid var(--accent);outline-offset:3px
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@media(max-width:430px){
+  h1{font-size:clamp(42px,14vw,64px);letter-spacing:-.06em}
+  .case-title{font-size:clamp(48px,16vw,72px)}
+  .hero-orbit{display:none}
+  .portal-word{font-size:clamp(48px,18vw,90px)}
+  .q button{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+ .loader{display:none}.reveal{opacity:1;transform:none}.line span{transform:none}
+}
+</style>
 </head>
-<body>
-
-<header id="header" class="header">
-  <div class="header-inner container">
-    <a href="/" class="logo">
-      <img class="logo-img" src="assets/logo.png" alt="Studio Glubina" width="1024" height="1024">
-      <span class="logo-text"><span class="logo-main">STUDIO GLUBINA</span><span class="logo-sub">DIGITAL DESIGN STUDIO</span></span>
-    </a>
-    <nav class="nav nav-desktop">
-      <a href="/works/">Работы</a>
-      <a href="#services">Услуги</a>
-      <a href="#process">Процесс</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-    <a class="btn btn-primary btn-header nav-desktop" href="https://t.me/studioglubina" target="_blank" rel="noopener noreferrer">Написать в Telegram ↗</a>
-    <button class="burger nav-mobile" id="burgerBtn" type="button" aria-label="Открыть меню" aria-expanded="false">
-      <span></span><span></span>
-    </button>
+<body class="lock">
+<div class="loader">
+  <div class="loader-box">
+    <div class="loader-title">STUDIO<br>GLUBINA</div>
+    <div class="loadline"><i></i></div>
+    <div class="loader-meta"><span>Структура</span><span>Дизайн</span><span>Разработка</span></div>
   </div>
-</header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-top">
-    <span class="logo-main">STUDIO GLUBINA</span>
-    <button class="mobile-close" id="mobileCloseBtn" type="button" aria-label="Закрыть меню">✕</button>
-  </div>
-  <nav class="mobile-nav">
-    <a href="/works/" class="mobile-nav-link">Работы</a>
-    <a href="#services" class="mobile-nav-link">Услуги</a>
-    <a href="#process" class="mobile-nav-link">Процесс</a>
-    <a href="#contacts" class="mobile-nav-link">Контакты</a>
-  </nav>
-  <div class="mobile-menu-contacts">studio.glubina@gmail.com<br>@studioglubina</div>
 </div>
+<div class="progress" aria-hidden="true"><i></i></div>
+<div class="cursor" aria-hidden="true"></div><div class="clabel" aria-hidden="true">Смотреть</div>
 
-<section id="hero" class="hero">
-  <div class="container">
-    <div class="hero-text">
-      <h1 class="hero-title">
-        <span class="line-mask"><span class="line hero-line" data-delay="80">Создаём сайты,</span></span>
-        <span class="line-mask"><span class="line hero-line" data-delay="160">которые помогают</span></span>
-        <span class="line-mask"><span class="line hero-line" data-delay="240">бизнесу выглядеть <span class="accent">сильнее.</span></span></span>
-      </h1>
-      <p class="hero-desc hero-fade" data-delay="360">Продумываем структуру, создаём дизайн и запускаем сайт, который понятно объясняет ваше предложение и приводит человека к заявке.</p>
-      <div class="hero-actions hero-fade" data-delay="440">
-        <a class="btn btn-primary" href="https://t.me/studioglubina" target="_blank" rel="noopener noreferrer">Написать в Telegram ↗</a>
-        <a class="btn btn-secondary" href="/works/">Смотреть работы</a>
-      </div>
+<nav><div class="wrap nav">
+  <a class="logo" href="/" aria-label="Studio Glubina — на главную">STUDIO GLUBINA</a>
+  <div class="links"><a href="#works">Работы</a><a href="#approach">Подход</a><a href="#services">Услуги</a><a href="#process">Процесс</a><a href="#faq">FAQ</a></div>
+  <a class="navcta magnet" href="#contact">Обсудить проект</a>
+</div></nav>
+
+<main>
+<section class="hero">
+  <div class="hero-orbit" aria-hidden="true"><i></i></div>
+  <div class="wrap">
+    <h1>
+      <span class="line"><span>Сайты, которые</span></span>
+      <span class="line"><span>помогают бизнесу</span></span>
+      <span class="line"><span><span class="accentline">выглядеть сильнее.</span></span></span>
+    </h1>
+    <div class="hero-bottom">
+      <div class="hero-copy">Продумываем структуру, создаём дизайн и запускаем сайты, на которых человек быстро понимает ваше предложение и знает, что делать дальше.</div>
+      <div class="hero-action"><a class="roundcta magnet" href="#works">Смотреть<br>работы</a></div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <h2 class="reveal" data-reveal>Хороший сайт не должен мешать человеку выбирать.</h2>
-    <p class="lead reveal" data-reveal>Мы убираем лишнее, выстраиваем понятную структуру и направляем внимание к главному действию.</p>
-    <div class="approach-grid">
-      <div class="approach-card"><div class="approach-title">Структура</div><p>Пользователь сразу понимает, куда он попал, что вы предлагаете и что нужно сделать дальше.</p></div>
-      <div class="approach-card"><div class="approach-title">Дизайн</div><p>Визуальный стиль усиливает доверие к бизнесу, а не отвлекает от содержания.</p></div>
-      <div class="approach-card"><div class="approach-title">Запуск</div><p>Подключаем формы, аналитику, домен и подготавливаем сайт к рекламе.</p></div>
-    </div>
-  </div>
-</section>
+<div class="strip"><div class="striptrack">
+  <span>Структура <b></b> Дизайн <b></b> Разработка <b></b> Запуск <b></b> Смысл прежде декора <b></b></span>
+  <span>Структура <b></b> Дизайн <b></b> Разработка <b></b> Запуск <b></b> Смысл прежде декора <b></b></span>
+</div></div>
 
-<section id="services" class="section">
-  <div class="container">
-    <h2>Формат зависит от задачи.</h2>
-    <p class="lead" style="margin-bottom:56px;">Не продаём лишние страницы. Сначала определяем, что действительно нужно бизнесу.</p>
-    <div class="services-grid">
-      <div class="service-card" tabindex="0" data-index="0">
+<section id="works">
+<div class="wrap">
+  <div class="head reveal"><h2>Проект должен выглядеть так, чтобы захотелось открыть его ещё до объяснения.</h2>
+  </div>
+
+  <div class="portfolio-intro reveal">
+    <p>Поэтому здесь не «карточки кейсов». Каждый проект получает свой масштаб, цвет, композицию и живое превью — как отдельная работа внутри сайта студии.</p>
+  </div>
+
+  <div class="cases">
+
+    <article class="case reveal">
+      <div class="case-heading">
         <div>
-          <div class="service-title">Лендинг</div>
-          <p class="service-desc">Для одной услуги, продукта или рекламного предложения.</p>
-          <div class="service-details">
-            <div class="service-includes">
-              <div>— Проектирование структуры</div><div>— Индивидуальный дизайн</div><div>— Мобильная адаптация</div>
-              <div>— Подключение форм</div><div>— Аналитика</div>
-            </div>
+          <h3 class="case-title">КотиксУМ</h3>
+          <div class="case-meta">
+            <div><strong>Задача</strong><p>Собрать большой образовательный центр в понятный цифровой продукт для родителей.</p></div>
+            <div><strong>Направление</strong><p>Структура, UX, визуальная система, страницы под рекламу и SEO.</p></div>
           </div>
         </div>
-        <div class="service-price">от 20 000 ₽</div>
       </div>
-      <div class="service-card" tabindex="0" data-index="1">
-        <div>
-          <div class="service-title">Многостраничный сайт</div>
-          <p class="service-desc">Для компании с несколькими услугами, направлениями и сложной структурой.</p>
-          <div class="service-details">
-            <div class="service-includes">
-              <div>— Проектирование структуры</div><div>— Индивидуальный дизайн</div><div>— Мобильная адаптация</div>
-              <div>— Подключение форм</div><div>— Аналитика</div>
-            </div>
+
+      <div class="project-portal education">
+        <div class="portal-main">
+          <h4>КотиксУМ</h4>
+          <p>Сайт детского образовательного центра: от тревоги родителя — к понятному результату для ребёнка и записи на диагностику.</p>
+          <div class="portal-actions">
+            <div class="portal-note">Многостраничный сайт · структура · UX · дизайн · мобильная версия · страницы под рекламу и поиск</div>
+            <a class="portal-button magnet" href="https://kotiksym.ru/" target="_blank" rel="noopener noreferrer">Перейти на сайт ↗</a>
           </div>
         </div>
-        <div class="service-price">от 35 000 ₽</div>
+        <div class="portal-word">КОТИКСУМ</div>
       </div>
-      <div class="service-card" tabindex="0" data-index="2">
+
+      <div class="case-caption">
+        <div class="case-caption-main">
+          <h4>Не каталог курсов. Сайт, который начинается с того, что беспокоит родителя.</h4>
+          <p>Вместо абстрактных методик — узнаваемые ситуации: ребёнок читает медленно, не понимает текст, забывает, боится отвечать. От проблемы пользователь идёт к результату и диагностике.</p>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail">
+          <div><h5>Одна система для множества страниц.</h5><p>Главная, направления и страницы конкретных проблем работают как единая логика, а не как набор отдельных лендингов.</p></div>
+          <div class="detail-orbit"></div>
+        </div>
+        <div class="detail accent">
+          <div><h5>Сначала ситуация. Потом решение.</h5><p>Коммуникация построена вокруг результата ребёнка и понятного следующего шага для родителя.</p></div>
+          <div class="detail-orbit"></div>
+        </div>
+        <div class="detail dark">
+          <div><h5>Проект должен работать не только на широком экране.</h5><p>Отдельное внимание — мобильной иерархии, переносам заголовков и компактным пользовательским маршрутам.</p></div>
+          <div class="detail-orbit"></div>
+        </div>
+      </div>
+
+      <div class="case-footer">
+        <a class="case-live magnet" href="https://kotiksym.ru/" target="_blank" rel="noopener noreferrer">Открыть проект ↗</a>
+      </div>
+    </article>
+
+    <article class="case reveal">
+      <div class="case-heading">
         <div>
-          <div class="service-title">Поддержка после запуска</div>
-          <p class="service-desc">Техническое сопровождение сайта, обновления и небольшие изменения — по желанию.</p>
-          <div class="service-details">
-            <div class="service-includes">
-              <div>— Техническое сопровождение</div><div>— Небольшие правки</div><div>— Обновление текстов и изображений</div>
-              <div>— Консультации</div><div>— Контроль работы сайта</div>
-            </div>
+          <h3 class="case-title">Meridian</h3>
+          <div class="case-meta">
+            <div><strong>Задача</strong><p>Сформулировать и визуально объяснить концепцию CRM нового поколения ещё до появления MVP.</p></div>
+            <div><strong>Направление</strong><p>Продукт story, позиционирование, UX лендинга и визуальный язык SaaS-продукта.</p></div>
           </div>
         </div>
-        <div class="service-price">отдельно, по желанию</div>
       </div>
-    </div>
+
+      <div class="project-portal meridian">
+        <div class="portal-main">
+          <h4>Meridian</h4>
+          <p>Лендинг концепции CRM нового поколения: сначала человек понимает идею продукта, а уже потом — чем AI меняет привычную работу с системой.</p>
+          <div class="portal-actions">
+            <div class="portal-note">Позиционирование · продуктовая история · UX лендинга · визуальная система</div>
+            <a class="portal-button magnet" href="https://meridianapp.ru/" target="_blank" rel="noopener noreferrer">Перейти на сайт ↗</a>
+          </div>
+        </div>
+        <div class="portal-word">MERIDIAN</div>
+      </div>
+
+      <div class="case-caption">
+        <div class="case-caption-main">
+          <h4>Не ещё один dashboard. CRM, где путь начинается с намерения человека.</h4>
+          <p>Вместо десятков экранов и фильтров пользователь формулирует задачу обычным языком. Лендинг должен сначала объяснить знакомую категорию — CRM — и только потом раскрывать новую механику.</p>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail dark">
+          <div><h5>Скажите, что нужно сделать.</h5><p>Эта фраза становится не рекламным слоганом, а центральным принципом взаимодействия с будущим продуктом.</p></div>
+          <div class="detail-orbit"></div>
+        </div>
+        <div class="detail">
+          <div><h5>Сначала CRM. Потом AI.</h5><p>Новая технология становится понятнее, когда у человека сначала есть знакомая точка опоры.</p></div>
+          <div class="detail-orbit"></div>
+        </div>
+        <div class="detail accent">
+          <div><h5>Концепт не притворяется готовым продуктом.</h5><p>Пока MVP нет, сайт должен продавать направление и ранний интерес — без фейковых дашбордов и придуманных возможностей.</p></div>
+          <div class="detail-orbit"></div>
+        </div>
+      </div>
+
+      <div class="case-footer">
+        <a class="case-live magnet" href="https://meridianapp.ru/" target="_blank" rel="noopener noreferrer">Открыть проект ↗</a>
+      </div>
+    </article>
+
+  </div>
+
+  
+</div>
+</section>
+
+<section id="approach" class="statement">
+  <div class="bigG" aria-hidden="true">G</div>
+  <div class="wrap">
+    <div class="kicker reveal">Принцип</div>
+    <p class="reveal">Хороший сайт не должен мешать человеку выбирать. <span class="dim">Каждый экран либо объясняет, либо направляет, либо убеждает.</span></p>
+    <div class="statement-note reveal">Красивый эффект остаётся только тогда, когда он усиливает характер, направляет взгляд или помогает понять идею. Всё остальное — шум.</div>
   </div>
 </section>
 
-<section id="process" class="section section-soft">
-  <div class="container process-layout">
-    <div class="process-left">
-      <h2>Пять этапов.<br>Один понятный маршрут.</h2>
-      <p class="lead">Вы всегда понимаете, что происходит с проектом, какой этап идёт сейчас и что требуется дальше.</p>
-    </div>
-    <div class="process-right">
-      <div class="process-step" data-step="0"><div class="process-num">01</div><div class="process-title">Погружение</div><p>Изучаем продукт, аудиторию, конкурентов и цель сайта.</p></div>
-      <div class="process-step" data-step="1"><div class="process-num">02</div><div class="process-title">Структура</div><p>Собираем сценарий страницы и расставляем приоритеты.</p></div>
-      <div class="process-step" data-step="2"><div class="process-num">03</div><div class="process-title">Визуальная система</div><p>Определяем типографику, цвета, ритм и характер интерфейса.</p></div>
-      <div class="process-step" data-step="3"><div class="process-num">04</div><div class="process-title">Разработка</div><p>Переносим дизайн в адаптивный, быстрый и аккуратный код.</p></div>
-      <div class="process-step" data-step="4"><div class="process-num">05</div><div class="process-title">Запуск и развитие</div><p>Проверяем формы, аналитику, мобильную версию и передаём проект.</p></div>
-    </div>
+<section>
+<div class="wrap">
+  <div class="head reveal"><h2>Красиво — недостаточно. Понятно — тоже недостаточно.</h2></div>
+  <div class="compare reveal">
+    <div class="left"><div><h3>Всё аккуратно. Нечего запомнить.</h3><p>Белый фон, карточки, одинаковые блоки и безопасная типографика могут выглядеть современно — но не создают характера.</p></div></div>
+    <div class="right"><div><h3>Сначала ясность. Потом характер.</h3><p>Строим понятную структуру и добавляем несколько сильных визуальных решений, которые принадлежат именно вашему бренду.</p></div></div>
   </div>
+</div>
 </section>
 
-<section class="section section-blue">
-  <div class="container">
-    <h2>Что делает сайт<br>сильным.</h2>
-    <div class="principles-grid">
-      <div class="principle"><div class="principle-title">Ясная иерархия</div><p>Пользователь сразу понимает, куда смотреть и что делать.</p></div>
-      <div class="principle"><div class="principle-title">Воздух и ритм</div><p>Свободное пространство связывает элементы и помогает читать страницу.</p></div>
-      <div class="principle"><div class="principle-title">Характер бренда</div><p>Сайт не должен быть похож на сотни конкурентов.</p></div>
-      <div class="principle"><div class="principle-title">Действие без препятствий</div><p>Чем проще путь к заявке, тем меньше посетителей теряется.</p></div>
-    </div>
+<section id="services">
+<div class="wrap">
+  <div class="head reveal"><h2>Можно начать с одного экрана. Или пересобрать весь сайт.</h2></div>
+  <div class="cards">
+    <div class="card reveal"><div><h3>Лендинг</h3><p>Один сильный маршрут для услуги, продукта или рекламного трафика.</p><div class="price">от 20 000 ₽</div></div></div>
+    <div class="card reveal"><div><h3>Многостраничный</h3><p>Структура для направлений, кейсов, SEO и нескольких пользовательских сценариев.</p><div class="price">от 35 000 ₽</div></div></div>
+    <div class="card reveal"><div><h3>Редизайн</h3><p>Не уничтожаем всё. Сохраняем сильное и переделываем то, что мешает человеку понимать и выбирать.</p><div class="price">после разбора</div></div></div>
   </div>
+</div>
 </section>
 
-<section class="section">
-  <div class="container faq-layout">
-    <div class="faq-left">
-      <h2>Перед началом важно обсудить детали.</h2>
-      <p class="lead">Короткие ответы о сроках, оплате и дальнейшей работе с сайтом.</p>
-    </div>
-    <div class="faq-right" id="faqList">
-      <div class="faq-item" data-index="0">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-panel-0">
-          <span>Сколько времени занимает разработка?</span><span class="faq-plus">+</span>
-        </button>
-        <div class="faq-answer" id="faq-panel-0"><p>Лендинг обычно занимает от 14 рабочих дней. Многостраничный сайт — от 25 рабочих дней. Точный срок зависит от объёма, скорости согласований и готовности материалов.</p></div>
-      </div>
-      <div class="faq-item" data-index="1">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-panel-1">
-          <span>Что потребуется от клиента?</span><span class="faq-plus">+</span>
-        </button>
-        <div class="faq-answer" id="faq-panel-1"><p>Нужно рассказать о продукте, услугах, аудитории и целях. Если тексты и фотографии не готовы, мы заранее определим, что необходимо подготовить.</p></div>
-      </div>
-      <div class="faq-item" data-index="2">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-panel-2">
-          <span>Можно ли заказать только редизайн?</span><span class="faq-plus">+</span>
-        </button>
-        <div class="faq-answer" id="faq-panel-2"><p>Да. Сначала мы проверим текущую структуру и определим, что можно сохранить, а что мешает пользователю и требует переработки.</p></div>
-      </div>
-      <div class="faq-item" data-index="3">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-panel-3">
-          <span>Кто будет владеть доменом и сайтом?</span><span class="faq-plus">+</span>
-        </button>
-        <div class="faq-answer" id="faq-panel-3"><p>Домен, доступы и готовый проект принадлежат клиенту. После завершения работы мы передаём все необходимые данные.</p></div>
-      </div>
-      <div class="faq-item" data-index="4">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-panel-4">
-          <span>Можно ли самостоятельно менять тексты?</span><span class="faq-plus">+</span>
-        </button>
-        <div class="faq-answer" id="faq-panel-4"><p>Да, если проект предусматривает систему управления содержимым. Формат редактирования определяем до начала разработки.</p></div>
-      </div>
-      <div class="faq-item" data-index="5">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-panel-5">
-          <span>Что происходит после запуска?</span><span class="faq-plus">+</span>
-        </button>
-        <div class="faq-answer" id="faq-panel-5"><p>Проверяем формы, аналитику, отображение на устройствах и основные пользовательские сценарии. При необходимости продолжаем поддержку проекта.</p></div>
-      </div>
-      <div class="faq-item" data-index="6">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-panel-6">
-          <span>Можно ли использовать сайт в рекламе?</span><span class="faq-plus">+</span>
-        </button>
-        <div class="faq-answer" id="faq-panel-6"><p>Да. Структура посадочных страниц и формы заявок могут быть подготовлены под рекламные каналы.</p></div>
-      </div>
-      <div class="faq-item" data-index="7">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-panel-7">
-          <span>Как происходит оплата?</span><span class="faq-plus">+</span>
-        </button>
-        <div class="faq-answer" id="faq-panel-7"><p>Работа делится на этапы. Условия, сроки и порядок платежей фиксируются до начала проекта.</p></div>
-      </div>
-    </div>
+<section id="process">
+<div class="wrap">
+  <div class="head reveal"><h2>Не начинаем с цвета кнопки.</h2></div>
+  <div class="process reveal">
+    <div class="step"><h3>Погружение</h3><p>Разбираемся в бизнесе, продукте, аудитории и том, где сайт сейчас теряет человека.</p></div>
+    <div class="step"><h3>Структура</h3><p>Строим путь пользователя до того, как начинаем заниматься декором.</p></div>
+    <div class="step"><h3>Визуальная система</h3><p>Типографика, цвет, изображения, ритм и motion начинают работать как единый язык.</p></div>
+    <div class="step"><h3>Разработка</h3><p>Собираем адаптивный интерфейс, состояния, анимации и детали.</p></div>
+    <div class="step"><h3>Запуск</h3><p>Проверяем мобильную версию, формы и пользовательские сценарии перед трафиком.</p></div>
   </div>
+</div>
 </section>
 
-<section id="contacts" class="section section-blue cta-section">
-  <div class="container">
-    <h2 class="cta-title reveal" data-reveal>Обсудим ваш проект?</h2>
-    <p class="cta-desc">Напишите нам в Telegram или на почту. Расскажите, какой сайт вам нужен, и мы предложим подходящий формат работы.</p>
-    <div class="hero-actions">
-      <a class="btn btn-dark" href="https://t.me/studioglubina" target="_blank" rel="noopener noreferrer">Написать в Telegram ↗</a>
-      <a class="btn btn-mail" href="mailto:studio.glubina@gmail.com">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        studio.glubina@gmail.com
-      </a>
-    </div>
+<section id="faq">
+<div class="wrap">
+  <div class="head reveal"><h2>До начала проекта обычно спрашивают вот это.</h2></div>
+  <div class="faq reveal">
+    <div class="q"><button><span>Сколько занимает создание сайта?</span><span>+</span></button><div class="answer"><p>Зависит от объёма и готовности материалов. Перед стартом фиксируем этапы и понятный порядок работы, чтобы проект не превращался в бесконечную переписку.</p></div></div>
+    <div class="q"><button><span>Что если у меня нет готовых текстов?</span><span>+</span></button><div class="answer"><p>Это нормально. Начинаем со смысла и структуры: что вы продаёте, кому и почему человек должен выбрать вас. После этого текст собирать намного проще.</p></div></div>
+    <div class="q"><button><span>Можно переделать существующий сайт?</span><span>+</span></button><div class="answer"><p>Да. Не обязательно уничтожать всё с нуля. Сначала определяем, что уже работает, а затем меняем только то, что мешает восприятию, доверию или конверсии.</p></div></div>
+    <div class="q"><button><span>Смогу ли я потом менять контент?</span><span>+</span></button><div class="answer"><p>При выборе подходящей платформы — да. Структура проекта планируется так, чтобы базовые тексты, изображения и контент можно было обновлять без пересборки всего сайта.</p></div></div>
   </div>
+</div>
 </section>
 
-<footer class="footer">
-  <div class="container footer-top">
-    <div class="footer-about">
-      <div class="footer-logo">STUDIO GLUBINA</div>
-      <p>Сайты для бизнеса: структура, дизайн, разработка и запуск.</p>
-    </div>
-    <div class="footer-cols">
-      <div>
-        <div class="footer-heading">НАВИГАЦИЯ</div>
-        <a href="/">Главная</a>
-        <a href="/works/">Работы</a>
-        <a href="#services">Услуги</a>
-        <a href="#process">Процесс</a>
-        <a href="#contacts">Контакты</a>
-      </div>
-      <div>
-        <div class="footer-heading">КОНТАКТЫ</div>
-        <a href="https://t.me/studioglubina" target="_blank" rel="noopener noreferrer">Telegram: @studioglubina</a>
-        <a href="mailto:studio.glubina@gmail.com">Почта: studio.glubina@gmail.com</a>
-      </div>
-    </div>
+<section id="contact" class="cta">
+<div class="wrap">
+  <div class="ctabox reveal">
+    <div class="ring" aria-hidden="true"></div>
+    <h2>Есть проект?<br>Нырнём глубже.</h2>
+    <div class="ctabottom"><p>Расскажите, что вы продаёте и что сейчас не работает. Начнём не с шаблона, а с того, что должен понять ваш клиент.</p><div class="contact-buttons">
+  <a class="pill magnet" href="https://mail.google.com/mail/?view=cm&fs=1&to=studio.glubina@gmail.com&su=Проект%20для%20Studio%20Glubina" target="_blank" rel="noopener noreferrer" aria-label="Написать на почту studio.glubina@gmail.com">Написать на почту</a>
+  <a class="pill pill-telegram magnet" href="https://t.me/studioglubina" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram @studioglubina">Написать в Telegram</a>
+</div>
+<p class="contact-email" style="margin:18px 0 0;font-size:14px;color:rgba(255,255,255,.72);">Почта: <a href="mailto:studio.glubina@gmail.com" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">studio.glubina@gmail.com</a> · Telegram: <a href="https://t.me/studioglubina" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">@studioglubina</a></p></div>
   </div>
-  <div class="container footer-bottom">
-    <span>© 2026 Studio Glubina</span>
-    <button id="backToTop" type="button">Наверх ↑</button>
-  </div>
-  <div class="container footer-legal" style="display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:8px;padding-bottom:8px;font-size:13px;opacity:.72;">
-    <a href="/requisites.html">Информация об исполнителе</a>
-    <a href="/privacy-policy.html">Политика обработки данных</a>
-  </div>
-</footer>
+</div>
+</section>
+</main>
 
-<script src="js/main.js"></script>
+<footer><div class="wrap foot"><span>© 2026 Studio Glubina</span><span>Структура · Дизайн · Разработка</span><span>Смысл прежде декора.</span></div>
+<div class="wrap" style="display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:14px;font-size:12px;opacity:.72;"><a href="/requisites.html">Информация об исполнителе</a><a href="/privacy-policy.html">Политика обработки данных</a></div></footer>
+
+<script>
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function dismissLoader(){
+  const loader=document.querySelector('.loader');
+  if(loader) loader.classList.add('hide');
+  document.body.classList.remove('lock');
+}
+if(reduce){dismissLoader();}
+else if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',()=>setTimeout(dismissLoader,850),{once:true});
+}else{
+  setTimeout(dismissLoader,850);
+}
+setTimeout(dismissLoader,2200);
+const nav=document.querySelector('nav'),prog=document.querySelector('.progress i');
+function scrollUI(){nav.classList.toggle('scrolled',scrollY>20);const m=document.documentElement.scrollHeight-innerHeight;prog.style.transform=`scaleX(${m?scrollY/m:0})`}
+addEventListener('scroll',scrollUI,{passive:true});scrollUI();
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+
+document.querySelectorAll('.q button').forEach((btn,i)=>{
+  const q=btn.parentElement,a=q.querySelector('.answer'),id='faq-panel-'+i;
+  a.id=id;btn.setAttribute('aria-controls',id);btn.setAttribute('aria-expanded','false');
+  btn.addEventListener('click',()=>{
+    const open=q.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    a.style.maxHeight=open?a.scrollHeight+'px':'0px';
+  });
+});
+
+if(matchMedia('(pointer:fine)').matches&&!reduce){
+ const c=document.querySelector('.cursor'),lab=document.querySelector('.clabel');
+ addEventListener('mousemove',e=>{c.style.left=e.clientX+'px';c.style.top=e.clientY+'px';lab.style.left=e.clientX+'px';lab.style.top=e.clientY+'px'});
+ document.querySelectorAll('a,.tilt,button,.case-stage').forEach(el=>{el.addEventListener('mouseenter',()=>c.classList.add('big'));el.addEventListener('mouseleave',()=>c.classList.remove('big'))});
+ document.querySelectorAll('[data-cursor]').forEach(el=>{el.addEventListener('mouseenter',()=>{lab.textContent=el.dataset.cursor;lab.classList.add('show')});el.addEventListener('mouseleave',()=>lab.classList.remove('show'))});
+ document.querySelectorAll('.tilt').forEach(card=>{
+   const b=card.querySelector('.project-window') || card.querySelector('.browser');
+   if(!b) return;
+   card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;b.style.transform=`translate3d(${x*18}px,${y*18}px,0) rotateX(${-y*2.4}deg) rotateY(${x*2.4}deg) scale(1.014)`});
+   card.addEventListener('mouseleave',()=>b.style.transform='');
+ });
+
+ document.querySelectorAll('.magnet').forEach(el=>{
+   el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.14}px,${(e.clientY-r.top-r.height/2)*.14}px)`});
+   el.addEventListener('mouseleave',()=>el.style.transform='');
+ });
+}
+</script>
 </body>
 </html>
