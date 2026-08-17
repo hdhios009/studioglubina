@@ -223,7 +223,7 @@
         submitting = false;
       }).catch(function () {
         if (btn) { btn.disabled = false; btn.textContent = btnDefaultText; }
-        setFieldError('contact', 'Не удалось отправить. Попробуйте ещё раз или напишите в Telegram @studioglubina');
+        setFieldError('contact', 'Не удалось отправить. Попробуйте ещё раз или напишите на почту pavlovvmaksimm@gmail.com');
         submitting = false;
       });
     });
@@ -254,7 +254,7 @@
   }
 
   // ---------- tariff cards: toggle details, Telegram links, analytics ----------
-  var TELEGRAM_CONTACT = 'https://t.me/studioglubina';
+  var TELEGRAM_CONTACT = 'mailto:pavlovvmaksimm@gmail.com';
 
   var TARIFF_META = {
     start:   { name: "Старт",       launch: 15000,  monthly: 2490 },
